@@ -51,18 +51,13 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
         Exercise exercise = listExercise.get(position);
 
         // Do gif vao
-//        ((MyListviewLayoutBinding)binding).gifItem.setImageResource(exercise.getIndexGifInDrawable());
+        ((MyListviewLayoutBinding)binding).gifItem.setImageResource(exercise.getIndexGifInDrawable());
 
 
 
         // CO BUG
         Glide.with(context).asGif().load(this.listExercise.get(position).getIndexGifInDrawable()).into(((MyListviewLayoutBinding)binding).gifItem);
 
-        Log.d("test", "getView: run");
-        Log.d("test", "position" + position);
-        if (((MyListviewLayoutBinding)binding).gifItem.getDrawable() instanceof BitmapDrawable) {
-            Log.d("test", "position" + ((BitmapDrawable) ((MyListviewLayoutBinding) binding).gifItem.getDrawable()).getBitmap());
-        }
 
         // Do name
         ((MyListviewLayoutBinding)binding).tvGifName.setText(exercise.getGifName());
