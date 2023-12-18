@@ -39,8 +39,8 @@ public class ExerciseFragment extends AbstractFragment {
 
 
         // TAO MANG TAM THOI
-        Exercise exe1 = new Exercise("chest", 30, 100,R.drawable.a);
-        Exercise exe2 = new Exercise("Shoulder", 30, 200,R.drawable.b);
+        Exercise exe1 = new Exercise("chest", 30, 100,R.drawable.a,"ch");
+        Exercise exe2 = new Exercise("Shoulder", 30, 200,R.drawable.b, "ch");
 
         listExerciseFromDatabase.add(exe1);
         listExerciseFromDatabase.add(exe2);
