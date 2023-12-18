@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_16dp"
+    tools:context=".activities.AppDrawerActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvRecent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/recent_exercise"
+        android:textSize="@dimen/fs_24"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/_16dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imageRecent"
+        android:layout_width="@dimen/img_w"
+        android:layout_height="@dimen/img_w"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_16dp"
+        android:src="@mipmap/ic_launcher"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/category"
+        android:textSize="@dimen/fs_24"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="@dimen/_16dp"
+        android:layout_weight="1"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+        <ImageView
+            android:id="@+id/imageChest"
+            android:layout_width="@dimen/img_w"
+            android:layout_height="@dimen/img_w"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toTopOf="@+id/imageBiceps"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/imageShoulder"
+            android:layout_width="@dimen/img_w"
+            android:layout_height="@dimen/img_w"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="@+id/imageChest"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="@+id/imageChest"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/imageBiceps"
+            android:layout_width="@dimen/img_w"
+            android:layout_height="@dimen/img_w"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toTopOf="@+id/imageAbs"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageChest"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/imageTriceps"
+            android:layout_width="@dimen/img_w"
+            android:layout_height="@dimen/img_w"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="@+id/imageBiceps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="@+id/imageBiceps"
+            app:layout_constraintVertical_bias="0.5" />
+        <ImageView
+            android:id="@+id/imageAbs"
+            android:layout_width="@dimen/img_w"
+            android:layout_height="@dimen/img_w"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageBiceps"
+            app:layout_constraintVertical_bias="0.5" />
+        <ImageView
+            android:id="@+id/imageGlutes"
+            android:layout_width="@dimen/img_w"
+            android:layout_height="@dimen/img_w"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="@+id/imageAbs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="@+id/imageAbs"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+

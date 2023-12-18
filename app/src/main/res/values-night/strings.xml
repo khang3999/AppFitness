@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back"><![CDATA[&#60;]]></string>
+    <string name="next">Continue</string>
+    <string name="gender_2">Gender_2</string>
+    <string name="gender_3">Gender 3</string>
+    <string name="fullname">Full name</string>
+    <string name="recent_exercise">Recent Exercise</string>
+    <string name="True">True</string>
+    <string name="openDrawer">Open</string>
+    <string name="closeDrawer">Close</string>
+</resources>
