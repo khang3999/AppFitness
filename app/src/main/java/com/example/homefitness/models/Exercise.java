@@ -1,6 +1,8 @@
 package com.example.homefitness.models;
 
-public class Exercise {
+import java.io.Serializable;
+
+public class Exercise implements Serializable {
     private String gifName;
     private int calorie;
 
@@ -52,4 +54,13 @@ public class Exercise {
         this.indexGifInDrawable = indexGifInDrawable;
     }
 
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                "gifName='" + gifName + '\'' +
+                ", calorie=" + calorie +
+                ", time=" + time +
+                ", indexGifInDrawable=" + indexGifInDrawable +
+                '}';
+    }
 }

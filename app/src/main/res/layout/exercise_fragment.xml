@@ -29,16 +29,18 @@
         android:orientation="horizontal"
         android:gravity="center">
         <Button
-            android:id="@+id/btnGetList"
+            android:id="@+id/btnGetStarted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/fs_20"
-            android:text="@string/get_list"/>
+            android:text="@string/get_list"
+            />
         <Button
             android:id="@+id/btnAddFavoriteList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/fs_20"
-            android:text="@string/add_favorite_list"/>
+            android:text="@string/add_favorite_list"
+            android:layout_marginLeft="@dimen/_8dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -5,4 +5,5 @@
     <color name="btnColor">#afea0d</color>
     <color name="background_nav">#EEF0E5</color>
     <color name="selected">#FA9243</color>
+    <color name="selectedRow">#FF2196F3</color>
 </resources>
