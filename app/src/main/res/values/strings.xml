@@ -14,7 +14,7 @@
     <string name="previous">Previous</string>
     <string name="title_activity_home_fitness">HomeFitnessActivity</string>
     <string name="fullname">Full name</string>
-    <string name="recent_exercise">Recent</string>
+    <string name="recent_exercise">Recent Exercise</string>
     <string name="category">Category</string>
 
     <string name="True">True</string>
