@@ -114,8 +114,6 @@ public class ExerciseFragment extends AbstractFragment {
         Exercise exe3 = new Exercise("Push Up", 30, 100,R.drawable.gif_3);
         Exercise exe4 = new Exercise("Alternating Superman", 30, 100,R.drawable.gif_4);
 
-        Exercise exe1 = new Exercise("chest", 30, 100,R.drawable.a,"ch");
-        Exercise exe2 = new Exercise("Shoulder", 30, 200,R.drawable.b, "ch");
 
 
         listExerciseFromDatabase.add(exe1);

@@ -5,15 +5,6 @@ import java.io.Serializable;
 
 public class Exercise implements Serializable {
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
-
-public class Exercise {
-
     private int id;
 
 
@@ -90,10 +81,12 @@ public class Exercise {
         this.indexGifInDrawable = indexGifInDrawable;
         this.categoryId = categoryId;
     }
-    @NonNull
-    @Override
-    public String toString() {
-        return super.toString();
+    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable) {
+        this.gifName = gifName;
+        this.calorie = calorie;
+        this.time = time;
+        this.indexGifInDrawable = indexGifInDrawable;
+        this.categoryId = "";
     }
 
 
