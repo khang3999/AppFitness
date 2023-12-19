@@ -122,7 +122,7 @@ public class HomeFragment extends AbstractFragment   {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
-                String categoryId = "tri";
+                String categoryId = "tr";
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu

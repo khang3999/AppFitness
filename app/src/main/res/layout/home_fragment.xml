@@ -36,7 +36,7 @@
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="3"
+    android:layout_weight="2"
     android:orientation="horizontal">
         <LinearLayout
             android:layout_width="0dp"
@@ -85,19 +85,20 @@
             android:layout_width="@dimen/img_w"
             android:layout_height="@dimen/img_w"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/chest"
             app:layout_constraintBottom_toTopOf="@+id/imageBiceps"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.5"
+            android:background="@drawable/rounded_corner" />
 
         <ImageView
             android:id="@+id/imageShoulder"
             android:layout_width="@dimen/img_w"
             android:layout_height="@dimen/img_w"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/shoulder"
             app:layout_constraintBottom_toBottomOf="@+id/imageChest"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
@@ -109,7 +110,7 @@
             android:layout_width="@dimen/img_w"
             android:layout_height="@dimen/img_w"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/biceps"
             app:layout_constraintBottom_toTopOf="@+id/imageAbs"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +122,7 @@
             android:layout_width="@dimen/img_w"
             android:layout_height="@dimen/img_w"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/triceps"
             app:layout_constraintBottom_toBottomOf="@+id/imageBiceps"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
@@ -132,7 +133,7 @@
             android:layout_width="@dimen/img_w"
             android:layout_height="@dimen/img_w"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/abs"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +144,7 @@
             android:layout_width="@dimen/img_w"
             android:layout_height="@dimen/img_w"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/glutes"
             app:layout_constraintBottom_toBottomOf="@+id/imageAbs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline1"

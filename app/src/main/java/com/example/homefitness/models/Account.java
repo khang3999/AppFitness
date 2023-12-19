@@ -17,13 +17,13 @@ import androidx.room.RoomDatabase;
         private double height;
         private double weight;
         private String target;
-        private String idRecentExercise;
+        private int idRecentExercise;
 
-        public String getIdRecentExercise() {
+        public int getIdRecentExercise() {
             return idRecentExercise;
         }
 
-        public void setIdRecentExercise(String idRecentExercise) {
+        public void setIdRecentExercise(int idRecentExercise) {
             this.idRecentExercise = idRecentExercise;
         }
 
@@ -77,7 +77,7 @@ import androidx.room.RoomDatabase;
 
 
 
-    public Account(int id, String name, String gender, double height, double weight, String target, String idRecentExercise) {
+    public Account(int id, String name, String gender, double height, double weight, String target, int idRecentExercise) {
             this.id = id;
             this.name = name;
             this.gender = gender;
@@ -87,7 +87,7 @@ import androidx.room.RoomDatabase;
             this.idRecentExercise =idRecentExercise;
         }
 
-        public Account( String name, String gender, double height, double weight, String target, String idRecentExercise) {
+        public Account( String name, String gender, double height, double weight, String target, int idRecentExercise) {
 
             this.name = name;
             this.gender = gender;
@@ -103,7 +103,7 @@ import androidx.room.RoomDatabase;
             this.height = 0;
             this.weight = 0;
             this.target = "unknown";
-            this.idRecentExercise="unknown";
+            this.idRecentExercise=0;
         }
         @NonNull
         @Override
