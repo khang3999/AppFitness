@@ -1,16 +1,11 @@
 package com.example.homefitness.models;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 
-public class Exercise {
+public class Exercise implements Serializable {
 
     private int id;
-
     private String gifName;
 
     private int time  = 30;
@@ -20,6 +15,15 @@ public class Exercise {
     private int indexGifInDrawable;
 
     private String categoryId;
+    private int favorite;
+
+    public int getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(int favorite) {
+        this.favorite = favorite;
+    }
 
     public int getId() {
         return id;
@@ -75,18 +79,26 @@ public class Exercise {
         this.time = 30;
         this.indexGifInDrawable = 0;
         this.categoryId = "";
+        this.favorite = 0;
     }
 
-    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable, String categoryId) {
+    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable, String categoryId, int favorite) {
         this.gifName = gifName;
         this.calorie = calorie;
         this.time = time;
         this.indexGifInDrawable = indexGifInDrawable;
         this.categoryId = categoryId;
+        this.favorite = favorite;
     }
-    @NonNull
+
     @Override
     public String toString() {
-        return super.toString();
+        return "Exercise{" +
+                "gifName='" + gifName + '\'' +
+                ", calorie=" + calorie +
+                ", time=" + time +
+                ", indexGifInDrawable=" + indexGifInDrawable +
+                '}';
     }
+
 }

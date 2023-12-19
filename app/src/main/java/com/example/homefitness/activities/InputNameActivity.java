@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.homefitness.R;
+<<<<<<< HEAD
 import com.example.homefitness.databinding.InputNameLayoutBinding;
+=======
+import com.example.homefitness.models.Account;
+>>>>>>> origin/khang
 
 public class InputNameActivity extends AppCompatActivity {
 
@@ -19,6 +23,7 @@ public class InputNameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         binding = InputNameLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -42,5 +47,11 @@ public class InputNameActivity extends AppCompatActivity {
                 }
             }
         });
+=======
+        setContentView(R.layout.input_name_layout);
+
+        Account account = new Account();
+
+>>>>>>> origin/khang
     }
 }
