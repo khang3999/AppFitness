@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 
 import com.example.homefitness.models.Account;
+import com.example.homefitness.models.Category;
 import com.example.homefitness.models.Exercise;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class MyDatabase extends SQLiteOpenHelper {
             // SQL ACCOUNT
             String sql = "CREATE TABLE " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + ACCOUNT_NAME + " VARCHAR (255) , " + GENDER + " VARCHAR (255) , " + HEIGHT + " DOUBLE , " + WEIGHT + " DOUBLE , "
-                    + TARGET + " VARCHAR (255) ," + ID_RECENT_EXERCISE + " VARCHAR (255)); ";
+                    + TARGET + " VARCHAR (255) ," + ID_RECENT_EXERCISE + " INTEGER ); ";
             // Create table account
             db.execSQL(sql);
 
@@ -128,7 +129,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                     ac.setHeight(cursor.getDouble(iHeight));
                     ac.setWeight(cursor.getDouble(iWeight));
                     ac.setTarget(cursor.getString(iTarget));
-                    ac.setIdRecentExercise(cursor.getString(iRecent));
+                    ac.setIdRecentExercise(cursor.getInt(iRecent));
 
                     listAccount.add(ac);
                 }while (cursor.moveToNext());
@@ -151,6 +152,23 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
     // ------ ACCOUNT END -------
     // ------ EXERCISE START ------
+
+    public int createExercise(Exercise exercise){
+        int result = 0;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if(sqlite != null){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(GIF_NAME, exercise.getGifName());
+            contentValues.put(TIME, exercise.getTime());
+            contentValues.put(CALORIE, exercise.getCalorie());
+            contentValues.put(INDEX_GIF_IN_DRAWABLE, exercise.getIndexGifInDrawable());
+            contentValues.put(CATEGORY_ID, exercise.getCategoryId());
+            contentValues.put(FAVORITE, exercise.getFavorite());
+            result = (int) sqlite.insert(EXERCISE_TABLE_NAME, null, contentValues);
+            sqlite.close();
+        }
+        return result;
+    }
     // lay tat ca danh sach
     public ArrayList<Exercise> getAllExercise() {
         ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
@@ -189,7 +207,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         SQLiteDatabase sqlite = getWritableDatabase();
 
         if (sqlite != null) {
-            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + EXERCISE_ID + " LIKE " + categoryId;
+            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + CATEGORY_ID + " LIKE '" + categoryId + "'";
             Cursor cursor = sqlite.rawQuery(sql, null);
 
             if (cursor != null && cursor.moveToFirst()) {
@@ -281,7 +299,23 @@ public class MyDatabase extends SQLiteOpenHelper {
         return lisExercise;
     }
         // ------ EXERCISE END -------
+        // ------ CATEGORY START -------
+        public int createCategory(Category category){
+            int result = 0;
+            SQLiteDatabase sqlite = getWritableDatabase();
+            if(sqlite != null){
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(CATEGORY_ID, category.getCategoryId());
+                contentValues.put(CATEGORY_NAME, category.getCategoryName());
+                contentValues.put(INDEX_CATEGORY_IN_DRAWABLE, category.getIndexCategoryInDrawable());
 
+                result = (int) sqlite.insert(CATEGORY_TABLE_NAME, null, contentValues);
+                sqlite.close();
+            }
+            return result;
+        }
+
+        // ------ CATEGORY END -------
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

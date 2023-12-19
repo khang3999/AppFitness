@@ -62,7 +62,7 @@ public class ChooseTargetActivity extends AppCompatActivity {
                 }
                 double heightD = Double.parseDouble(height);
                 double weightD = Double.parseDouble(weight);
-                Account acc = new Account(name,gender,heightD,weightD,target,"unknown");
+                Account acc = new Account(name,gender,heightD,weightD,target,0);
                 //Dua account len co so du lieu
                     myDatabase.createAccount(acc);
                     Intent intent = new Intent(ChooseTargetActivity.this, AppDrawerActivity.class);

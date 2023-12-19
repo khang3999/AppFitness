@@ -1,20 +1,23 @@
 package com.example.homefitness.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.homefitness.R;
 import com.example.homefitness.adapters.ExerciseAdapter;
 import com.example.homefitness.models.Exercise;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class ListExerciseActivity extends AppCompatActivity {
+public class ListExerciseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     // List du lieu lay tu database
     // Can lay du lieu tren database do vao list nay
     private ArrayList<Exercise> listExercises;
@@ -27,6 +30,11 @@ public class ListExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_exercise_layout);
 
+
+        // Get action bar back to previous
+        // khoi tao cho drawer
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         //Khoi tao array
         listExercises = new ArrayList<Exercise>();
         lvExercises = findViewById(R.id.lvExercise);
@@ -59,6 +67,7 @@ public class ListExerciseActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -77,5 +86,24 @@ public class ListExerciseActivity extends AppCompatActivity {
     protected void onRestart() {
         Log.d("onRestart", "onRestart: ");
         super.onRestart();
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        // Điều này sẽ tự động kết thúc hiện tại Activity và quay lại Activity trước đó (nếu có).
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }
