@@ -20,6 +20,8 @@ public class CalculateFragment extends AbstractFragment {
         // lay giao dien tuong ung dua vao fragment, 3 tham so: layout tuong ung, container , false
         fragment = inflater.inflate(R.layout.calculate_fragment, container, false);
 
+
+
         return fragment;
     }
 }

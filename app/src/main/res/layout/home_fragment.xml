@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_weight="1">
+        android:layout_weight="0.5">
         <TextView
             android:id="@+id/tvRecent"
             android:layout_width="0dp"
@@ -64,9 +64,6 @@
                 android:src="@mipmap/ic_launcher"/>
 
         </LinearLayout>
-
-
-
 </LinearLayout>
     <TextView
         android:id="@+id/tvCategory"
@@ -76,12 +73,12 @@
         android:textSize="@dimen/fs_24"
         android:gravity="center_vertical"
         android:layout_marginVertical="@dimen/_16dp"
-        android:layout_weight="1"/>
+        android:layout_weight="0.5"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6">
+        android:layout_weight="7">
 
         <ImageView
             android:id="@+id/imageChest"

@@ -40,7 +40,13 @@ public class ListExerciseActivity extends AppCompatActivity {
 
 
         //Set apdater
-        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
+        if(intent.getSerializableExtra("selectedExercises") == null){
+            listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
+        }else {
+            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
+        }
+
+        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout, listExercises);
         lvExercises.setAdapter(adapter);
 
         //set tong so bai tap

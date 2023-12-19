@@ -17,7 +17,6 @@ import androidx.room.RoomDatabase;
         private double height;
         private double weight;
         private String target;
-        private String favoriteList;
         private String idRecentExercise;
 
         public String getIdRecentExercise() {
@@ -76,33 +75,25 @@ import androidx.room.RoomDatabase;
         this.target = target;
     }
 
-    public String getFavoriteList() {
-        return favoriteList;
-    }
 
-    public void setFavoriteList(String favoriteList) {
-        this.favoriteList = favoriteList;
-    }
 
-    public Account(int id, String name, String gender, double height, double weight, String target, String favoriteList, String idRecentExercise) {
+    public Account(int id, String name, String gender, double height, double weight, String target, String idRecentExercise) {
             this.id = id;
             this.name = name;
             this.gender = gender;
             this.height = height;
             this.weight = weight;
             this.target = target;
-            this.favoriteList = favoriteList;
             this.idRecentExercise =idRecentExercise;
         }
 
-        public Account( String name, String gender, double height, double weight, String target, String favoriteList, String idRecentExercise) {
+        public Account( String name, String gender, double height, double weight, String target, String idRecentExercise) {
 
             this.name = name;
             this.gender = gender;
             this.height = height;
             this.weight = weight;
             this.target = target;
-            this.favoriteList = favoriteList;
             this.idRecentExercise = idRecentExercise;
         }
         public Account() {
@@ -112,7 +103,6 @@ import androidx.room.RoomDatabase;
             this.height = 0;
             this.weight = 0;
             this.target = "unknown";
-            this.favoriteList = "unknown";
             this.idRecentExercise="unknown";
         }
         @NonNull
