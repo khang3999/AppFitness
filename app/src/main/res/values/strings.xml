@@ -23,8 +23,14 @@
     <string name="exercise_1">Exercise 1</string>
     <string name="time">Time = 30s</string>
     <string name="search_here">Search here</string>
-    <string name="get_list">Get list</string>
-    <string name="add_favorite_list">Add favorite list</string>
-    <string name="favorite_exercise">Favorite</string>
+
+    <string name="get_list">Get Started</string>
+    <string name="add_favorite_list">Add favorite</string>
+    <string name="category_name">Category Name</string>
+    <string name="workouts">Workouts:</string>
+    <string name="minutes">Minutes:</string>
+    <string name="desc">descdescdescdescdescdescdescdescdescdescdescdescdesc</string>
+    <string name="start">Start</string>
+
 
 </resources>

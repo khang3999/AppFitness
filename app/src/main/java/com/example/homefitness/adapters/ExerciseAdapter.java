@@ -24,6 +24,8 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     private Activity context;
     private ArrayList<Exercise> listExercise;
 
+    private ViewBinding binding;
+
     public ExerciseAdapter(@NonNull Activity context, int resource, @NonNull ArrayList<Exercise> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -33,7 +35,6 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewBinding binding;
         //Chua co item nen can tao moi
         if (convertView == null){
             binding = MyListviewLayoutBinding.inflate(context.getLayoutInflater(),parent, false);
@@ -51,12 +52,13 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
         Exercise exercise = listExercise.get(position);
 
         // Do gif vao
-        ((MyListviewLayoutBinding)binding).gifItem.setImageResource(exercise.getIndexGifInDrawable());
+//        ((MyListviewLayoutBinding)binding).gifItem.setImageResource(exercise.getIndexGifInDrawable());
 
 
 
         // CO BUG
-        Glide.with(context).asGif().load(this.listExercise.get(position).getIndexGifInDrawable()).into(((MyListviewLayoutBinding)binding).gifItem);
+        Glide.with(context).asGif().load(exercise.getIndexGifInDrawable()).into(((MyListviewLayoutBinding)binding).gifItem);
+//        Glide.with(context).asGif().load("https://i.pinimg.com/originals/50/1b/b7/501bb7b2d0ca3f3567de98200d5ab0b5.gif").into(((MyListviewLayoutBinding)binding).gifItem);
 
 
         // Do name

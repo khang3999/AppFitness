@@ -1,5 +1,10 @@
 package com.example.homefitness.models;
 
+
+import java.io.Serializable;
+
+public class Exercise implements Serializable {
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -10,6 +15,7 @@ import androidx.room.PrimaryKey;
 public class Exercise {
 
     private int id;
+
 
     private String gifName;
 
@@ -89,4 +95,16 @@ public class Exercise {
     public String toString() {
         return super.toString();
     }
+
+
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                "gifName='" + gifName + '\'' +
+                ", calorie=" + calorie +
+                ", time=" + time +
+                ", indexGifInDrawable=" + indexGifInDrawable +
+                '}';
+    }
+
 }
