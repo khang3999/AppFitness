@@ -8,30 +8,66 @@
     tools:context=".activities.AppDrawerActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvRecent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/recent_exercise"
-        android:textSize="@dimen/fs_24"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="@dimen/_16dp"
-        android:layout_weight="1"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/tvRecent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/recent_exercise"
+            android:textSize="@dimen/fs_24"
+            android:gravity="center_vertical"
+            android:layout_weight="1"/>
 
-    <ImageView
-        android:id="@+id/imageRecent"
-        android:layout_width="@dimen/img_w"
-        android:layout_height="@dimen/img_w"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_16dp"
-        android:src="@mipmap/ic_launcher"/>
+        <TextView
+            android:id="@+id/tvFavorite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/favorite_exercise"
+            android:textSize="@dimen/fs_24"
+            android:gravity="center_vertical"
+            android:layout_weight="1"/>
     </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="3"
+    android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/imageRecent"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/imageFavorite"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+
+
+
+</LinearLayout>
     <TextView
         android:id="@+id/tvCategory"
         android:layout_width="match_parent"
