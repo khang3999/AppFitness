@@ -68,7 +68,7 @@ public class MyDatabase extends SQLiteOpenHelper {
             // SQL ACCOUNT
             String sql = "CREATE TABLE " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + ACCOUNT_NAME + " VARCHAR (255) , " + GENDER + " VARCHAR (255) , " + HEIGHT + " DOUBLE , " + WEIGHT + " DOUBLE , "
-                    + TARGET + " VARCHAR (255) ," + ID_RECENT_EXERCISE + " VARCHAR (255)); ";
+                    + TARGET + " VARCHAR (255) ," + ID_RECENT_EXERCISE + " INTEGER ); ";
             // Create table account
             db.execSQL(sql);
 
@@ -129,7 +129,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                     ac.setHeight(cursor.getDouble(iHeight));
                     ac.setWeight(cursor.getDouble(iWeight));
                     ac.setTarget(cursor.getString(iTarget));
-                    ac.setIdRecentExercise(cursor.getString(iRecent));
+                    ac.setIdRecentExercise(cursor.getInt(iRecent));
 
                     listAccount.add(ac);
                 }while (cursor.moveToNext());
