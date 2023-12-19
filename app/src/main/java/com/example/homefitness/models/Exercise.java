@@ -1,13 +1,39 @@
 package com.example.homefitness.models;
 
+
 import java.io.Serializable;
 
 public class Exercise implements Serializable {
+
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+
+public class Exercise {
+
+    private int id;
+
+
     private String gifName;
-    private int calorie;
 
     private int time  = 30;
+
+    private int calorie;
+
     private int indexGifInDrawable;
+
+    private String categoryId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getGifName() {
         return gifName;
@@ -24,6 +50,7 @@ public class Exercise implements Serializable {
     public void setTime(int time) {
         this.time = time;
     }
+
     public int getCalorie() {
         return calorie;
     }
@@ -40,19 +67,35 @@ public class Exercise implements Serializable {
         this.indexGifInDrawable = indexGifInDrawable;
     }
 
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public Exercise() {
         this.gifName = "";
         this.calorie = 0;
         this.time = 30;
         this.indexGifInDrawable = 0;
+        this.categoryId = "";
     }
 
-    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable) {
+    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable, String categoryId) {
         this.gifName = gifName;
         this.calorie = calorie;
         this.time = time;
         this.indexGifInDrawable = indexGifInDrawable;
+        this.categoryId = categoryId;
     }
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 
     @Override
     public String toString() {
@@ -63,4 +106,5 @@ public class Exercise implements Serializable {
                 ", indexGifInDrawable=" + indexGifInDrawable +
                 '}';
     }
+
 }
