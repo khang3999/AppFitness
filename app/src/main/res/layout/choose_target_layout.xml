@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="What's your name?"
+        android:text="What's your fitness goal/target?"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,17 +21,46 @@
         app:layout_constraintVertical_bias="0.47" />
 
 
-    <EditText
-        android:id="@+id/edtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Your's name!"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="60dp"
+    <RadioGroup
+        android:id="@+id/radGroup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="50dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/rad1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="I wanna lose weight"
+            android:paddingLeft="20dp"
+            android:textSize="20sp"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rad2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Just trying out the app!"
+            android:paddingLeft="20dp"
+            android:textSize="20sp"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rad3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Just trying out the app!"
+            android:paddingLeft="20dp"
+            android:textSize="20sp"></RadioButton>
+    </RadioGroup>
+
 
     <Button
         android:id="@+id/btnBack"

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="What's your name?"
+        android:text="What's your weight?"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,16 +22,18 @@
 
 
     <EditText
-        android:id="@+id/edtName"
+        android:id="@+id/edtWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Your's name!"
+        android:hint="Your's weight (kg)!"
         android:paddingVertical="20dp"
         android:paddingHorizontal="60dp"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
+
 
     <Button
         android:id="@+id/btnBack"
