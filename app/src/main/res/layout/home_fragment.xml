@@ -13,13 +13,14 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_weight="0.5">
+        android:layout_weight="1">
         <TextView
             android:id="@+id/tvRecent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="@string/recent_exercise"
             android:textSize="@dimen/fs_24"
+            android:padding="@dimen/_16dp"
             android:gravity="center_vertical"
             android:layout_weight="1"/>
 
@@ -29,6 +30,7 @@
             android:layout_height="match_parent"
             android:text="@string/favorite_exercise"
             android:textSize="@dimen/fs_24"
+            android:padding="@dimen/_16dp"
             android:gravity="center_vertical"
             android:layout_weight="1"/>
     </LinearLayout>
@@ -44,11 +46,18 @@
             android:layout_weight="2"
             android:orientation="horizontal"
             android:gravity="center">
-            <ImageView
-                android:id="@+id/imageRecent"
-                android:layout_width="@dimen/img_w"
-                android:layout_height="@dimen/img_w"
-                android:src="@mipmap/ic_launcher"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_20">
+                <ImageView
+                    android:id="@+id/imageRecent"
+                    android:layout_width="@dimen/img_w"
+                    android:layout_height="@dimen/img_w"
+                    android:src="@mipmap/ic_recent_foreground"/>
+
+            </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
         <LinearLayout
@@ -57,12 +66,16 @@
             android:layout_weight="2"
             android:orientation="horizontal"
             android:gravity="center">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/radius_20">
             <ImageView
                 android:id="@+id/imageFavorite"
                 android:layout_width="@dimen/img_w"
                 android:layout_height="@dimen/img_w"
-                android:src="@mipmap/ic_launcher"/>
-
+                android:src="@mipmap/ic_favorite_foreground"/>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 </LinearLayout>
     <TextView
@@ -71,9 +84,10 @@
         android:layout_height="0dp"
         android:text="@string/category"
         android:textSize="@dimen/fs_24"
+        android:padding="@dimen/_16dp"
         android:gravity="center_vertical"
         android:layout_marginVertical="@dimen/_16dp"
-        android:layout_weight="0.5"/>
+        android:layout_weight="1"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
