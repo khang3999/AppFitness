@@ -91,6 +91,15 @@ public class Exercise implements Serializable {
         this.favorite = favorite;
     }
 
+    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable) {
+        this.gifName = gifName;
+        this.calorie = calorie;
+        this.time = time;
+        this.indexGifInDrawable = indexGifInDrawable;
+        this.categoryId = "";
+    }
+
+
     @Override
     public String toString() {
         return "Exercise{" +
