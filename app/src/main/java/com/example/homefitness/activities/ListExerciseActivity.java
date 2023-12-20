@@ -35,9 +35,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_exercise_layout);
 
-
         //Khoi tao
-
 
         // Get action bar back to previous
         // khoi tao cho drawer
@@ -89,10 +87,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         });
 
 
-
-
     }
-
 
 
 

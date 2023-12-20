@@ -156,6 +156,30 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 
     // ------ EXERCISE START ------
+    // Update bai tap vao danh sach yeu thich
+    public boolean updateExercisesIntoFavorite(ArrayList<Exercise> listExercisesChoose){
+        boolean success = true;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        String sql ="";
+        String exercisesID ="";
+
+        for (Exercise exercise:
+             listExercisesChoose) {
+            exercisesID += exercise.getId()+",";
+        }
+        exercisesID = exercisesID.substring(0, exercisesID.length() - 1 ) ;
+
+        if (sqlite != null) {
+            sql = "Update "+EXERCISE_TABLE_NAME+" Set "+ FAVORITE +" = 1 Where "+ EXERCISE_ID +" IN ("+exercisesID+")";
+            try {
+                sqlite.execSQL(sql);
+            }catch (Exception ex){
+                success = false;
+            }
+        }
+        return success;
+
+    }
     public int createExercise(Exercise exercise){
         int result = 0;
         SQLiteDatabase sqlite = getWritableDatabase();

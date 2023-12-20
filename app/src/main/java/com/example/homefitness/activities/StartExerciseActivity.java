@@ -27,6 +27,8 @@ public class StartExerciseActivity extends AppCompatActivity {
     private TextView timer ;
     private TextView title ;
     private ImageView imageViewGIF;
+
+    private  int resourceId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,7 @@ public class StartExerciseActivity extends AppCompatActivity {
         listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
 
 //        //set up array render exercise
-         Exercise restGIF = new Exercise("rest",10,0,R.drawable.gif_rest_5);
+         Exercise restGIF = new Exercise("gif_rest_5",10,0,R.drawable.gif_rest_5);
         renderingExercises.addAll(listExercises);
         //them 1 gif rest sau moi 3 bai tap
         for (int i = 0; i < renderingExercises.size() ; i++) {
@@ -50,15 +52,15 @@ public class StartExerciseActivity extends AppCompatActivity {
                 renderingExercises.add(i,restGIF);
             }
         }
-
-
+        Log.d("renderingExercises", renderingExercises.toString());
 
         startCountdownTimer();
 
     }
     private void startCountdownTimer() {
 //        changeGif();
-        Glide.with(this).asGif().load(renderingExercises.get(currentGifIndex).getIndexGifInDrawable()).into(imageViewGIF);
+        resourceId = getResources().getIdentifier(renderingExercises.get(currentGifIndex).getGifName(), "drawable", getPackageName());
+        Glide.with(this).asGif().load(resourceId).into(imageViewGIF);
         new CountDownTimer(TOTAL_COUNTDOWN_TIME, COUNTDOWN_INTERVAL) {
 
             @Override
@@ -90,11 +92,13 @@ public class StartExerciseActivity extends AppCompatActivity {
         // Load the next GIF
         if ((currentGifIndex + 1) % 3 == 0 && currentGifIndex != 0){
             title.setText("REST TIME");
-            Glide.with(this).asGif().load(renderingExercises.get(currentGifIndex).getIndexGifInDrawable()).into(imageViewGIF);
+            resourceId = getResources().getIdentifier(renderingExercises.get(currentGifIndex).getGifName(), "drawable", getPackageName());
+            Glide.with(this).asGif().load(resourceId).into(imageViewGIF);
             currentGifIndex = (currentGifIndex + 1) % renderingExercises.size();//
         }else {
             title.setText("GO!");
-            Glide.with(this).asGif().load(renderingExercises.get(currentGifIndex).getIndexGifInDrawable()).into(imageViewGIF);
+            resourceId = getResources().getIdentifier(renderingExercises.get(currentGifIndex).getGifName(), "drawable", getPackageName());
+            Glide.with(this).asGif().load(resourceId).into(imageViewGIF);
             currentGifIndex = (currentGifIndex + 1) % renderingExercises.size();//
         }
     }
