@@ -290,7 +290,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         temp = temp.substring(0, temp.length() - 1);
         SQLiteDatabase sqlite = getWritableDatabase();
         if (sqlite != null) {
-            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + EXERCISE_ID + " LIKE ( " + temp + " )";
+            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + EXERCISE_ID + " IN ( " + temp + " )";
             Cursor cursor = sqlite.rawQuery(sql, null);
             if (cursor != null && cursor.moveToFirst()) {
                 do {
