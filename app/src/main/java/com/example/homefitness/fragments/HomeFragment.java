@@ -54,10 +54,11 @@ public class HomeFragment extends AbstractFragment   {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
+                // Lay du lieu tu database
                 Account ac = myDatabase.getAccount().get(0);
-                String recent = ac.getIdRecentExercise();
+                String listIdRecentExercise = ac.getListIdRecentExercise();
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
-                listExerciseByCategory = myDatabase.getExerciseByCategoryId(recent);
+                listExerciseByCategory = myDatabase.getListRecentExercise(listIdRecentExercise);
                 // chuyển thêm dữ liệu
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
