@@ -25,10 +25,10 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_layout);
 
+        // Khoi tao database
         myDatabase = new MyDatabase(WelcomeActivity.this);
-        Account a = new Account("Khang","Male", 165, 80, "aaa", "b,b", "ch");
+        Account a = new Account("Khang","Male", 165, 80, "aaa", "b,b");
         myDatabase.createAccount(a);
-
 
         if(myDatabase.getAccount().size() != 0){
             //handler
@@ -39,9 +39,8 @@ public class WelcomeActivity extends AppCompatActivity {
                         Intent intent = new Intent(WelcomeActivity.this, AppDrawerActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
-
                 }
-            }, 7000);
+            }, 5000);
         }
         else {
             //handler
@@ -53,7 +52,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
                 }
-            }, 7000);
+            }, 5000);
         }
 
 

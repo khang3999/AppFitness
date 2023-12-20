@@ -16,6 +16,7 @@
     <string name="fullname">Full name</string>
     <string name="recent_exercise">Recent</string>
     <string name="category">Category</string>
+    <string name="favorite_exercise">Favorite</string>
 
     <string name="True">True</string>
     <string name="openDrawer">Open</string>
@@ -32,6 +33,6 @@
     <string name="desc">descdescdescdescdescdescdescdescdescdescdescdescdesc</string>
     <string name="start">Start</string>
 
-    <string name="favorite_exercise">Favorite</string>
+
     <string name="go">"GO!"</string>
 </resources>
