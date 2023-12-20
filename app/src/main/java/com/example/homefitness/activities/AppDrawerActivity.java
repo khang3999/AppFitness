@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import com.example.homefitness.models.Account;
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class AppDrawerActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,7 +44,6 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
 
     private View preView;
     private Account account;
-    private MyDatabase myDatabase;
     private boolean doubleBackToExitPressedOnce = false;
 
     private static final long BACK_PRESS_DELAY = 2000; // Thời gian giữa 2 lần nhấn nút back
@@ -52,15 +53,16 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         super.onCreate(savedInstanceState);
         // dieu kien man hinh app_drawer_layout
         setContentView(R.layout.app_drawer_layout);
-<<<<<<< HEAD
-myDatabase = new MyDatabase(this);
-        account = myDatabase.getAccount().get(0);
-=======
+
 
         // khoi tao database
         myDatabase = new MyDatabase(this);
-        Account account = myDatabase.getAccount().get(0);
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
+        account = new Account();
+        ArrayList<Account> accounts = myDatabase.getAccount();
+
+
+        while (accounts.size()==0){}
+        account = accounts.get(0);
         //Khoi tao binding
         binding = AppDrawerLayoutBinding.inflate(getLayoutInflater());
         // Gán view cho binding
@@ -83,15 +85,15 @@ myDatabase = new MyDatabase(this);
         // Slide bar
         TextView hdFullname = binding.navigationView.findViewById(R.id.headerFullname);
         TextView hdgender = binding.navigationView.findViewById(R.id.headerGender);
-
         hdFullname.setText("Hello, " + account.getName());
-        hdgender.setText(account.getGender());
-        binding.slideTvHeight.setText(account.getHeight() + " Cm");
-        binding.slideTvWeight.setText(account.getWeight() + " Kg");
+
+       hdgender.setText(account.getGender());
+        binding.tvHeightData.setText(account.getHeight() + " Cm");
+        binding.tvWeightData.setText(account.getWeight() + " Kg");
         double bmi = account.getWeight()/(account.getHeight()/100*account.getHeight()/100);
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-        binding.slideTvBMI.setText(decimalFormat.format(bmi) + "");
-        binding.slideTvTarget.setText(account.getTarget());
+        binding.tvBmiData.setText(decimalFormat.format(bmi) + "");
+
 
         // Khoi tao background button mac dinh khi vao app trang home
         binding.mainScreen.findViewById(R.id.btnHome).setBackgroundColor(getColor(R.color.selected));

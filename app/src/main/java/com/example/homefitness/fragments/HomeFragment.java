@@ -56,22 +56,15 @@ public class HomeFragment extends AbstractFragment   {
                 Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
                 // Lay du lieu tu database
                 Account ac = myDatabase.getAccount().get(0);
-<<<<<<< HEAD
+
                 String listIdRecentExercise = ac.getListIdRecentExercise();
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
-                listExerciseByCategory = myDatabase.getListRecentExercise(listIdRecentExercise);
-=======
-//                int recent = ac.getIdRecentExercise();
-//                ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
-//                listExerciseByCategory = myDatabase.getExerciseByCategoryId(recent);
->>>>>>> e0607ad712ec2e5e8f5eaabc402c3e9a4960c0a3
+                if (myDatabase.getListRecentExercise(listIdRecentExercise).size() != 0) {
+                    listExerciseByCategory = myDatabase.getListRecentExercise(listIdRecentExercise);
+                }
                 // chuyển thêm dữ liệu
-<<<<<<< HEAD
-                //intent.putExtra("listExerciseByCategory", listExerciseByCategory);
-=======
                 intent.putExtra("title", "Recent");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
@@ -177,7 +170,7 @@ public class HomeFragment extends AbstractFragment   {
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
 
-                intent.putExtra("Glutes", "Recent");
+                intent.putExtra("title", "Glutes");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);

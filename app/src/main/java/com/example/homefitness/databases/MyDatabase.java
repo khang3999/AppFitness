@@ -195,21 +195,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String sql = null;
         if (sqlite != null) {
             sql = "SELECT * FROM " + EXERCISE_TABLE_NAME;
-<<<<<<< HEAD
 
-        Cursor cursor = sqlite.rawQuery(sql, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                Exercise ex = new Exercise();
-                int iId = cursor.getColumnIndex(EXERCISE_ID);
-                int iName = cursor.getColumnIndex(GIF_NAME);
-                int iTime = cursor.getColumnIndex(TIME);
-                int iCalorie = cursor.getColumnIndex(CALORIE);
-                int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
-                int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
-                int iFavorite = cursor.getColumnIndex(FAVORITE);
-=======
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
 
             Cursor cursor = sqlite.rawQuery(sql, null);
             if (cursor != null && cursor.moveToFirst()) {
@@ -223,11 +209,6 @@ public class MyDatabase extends SQLiteOpenHelper {
                     int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
                     int iFavorite = cursor.getColumnIndex(FAVORITE);
 
-<<<<<<< HEAD
-                lisExercise.add(ex);
-            } while (cursor.moveToNext());
-        }}
-=======
                     ex.setId(cursor.getInt(iId));
                     ex.setGifName(cursor.getString(iName));
                     ex.setTime(cursor.getInt(iTime));
@@ -240,7 +221,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                 } while (cursor.moveToNext());
             }
         }
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
+
         return lisExercise;
     }
 
@@ -317,6 +298,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     // Lay danh sach bai tap cuoi cung
     public ArrayList<Exercise> getListRecentExercise(String strRecentExerciseId) {
         ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        if (!strRecentExerciseId.isEmpty()){
         String[] arrStr =  strRecentExerciseId.split(",");
         int[] arrRecentExerciseId = new int[arrStr.length];
         String temp ="";
@@ -352,7 +334,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                     lisExercise.add(ex);
                 } while (cursor.moveToNext());
             }
-        }
+        }}
         return lisExercise;
     }
         // ------ EXERCISE END -------

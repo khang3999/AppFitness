@@ -68,6 +68,7 @@ public class ExerciseFragment extends AbstractFragment {
                         selectedExercises.add(listExerciseFromDatabase.get(i));
                     }
                     Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
+                    intent.putExtra("title", "Customize");
                     intent.putExtra("selectedExercises", selectedExercises);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
@@ -117,27 +118,11 @@ public class ExerciseFragment extends AbstractFragment {
             }
         });
         // TAO MANG TAM THOI
-<<<<<<< HEAD
-
-        Exercise exe1 = new Exercise("chest", 30, 100, R.drawable.gif_1, "ch", 0);
-        Exercise exe2 = new Exercise("Shoulder", 30, 200, R.drawable.gif_2, "sh", 0);
-        Exercise exe3 = new Exercise("Push Up", 30, 100, R.drawable.gif_3, "ch", 0);
-        Exercise exe4 = new Exercise("Alternating Superman", 30, 100, R.drawable.gif_4, "bi", 0);
-
-
-        listExerciseFromDatabase.add(exe1);
-        listExerciseFromDatabase.add(exe2);
-        listExerciseFromDatabase.add(exe3);
-        listExerciseFromDatabase.add(exe4);
-        listExerciseFromDatabase.add(exe1);
-        listExerciseFromDatabase.add(exe2);
 
         //Search
         filterList = new ArrayList<>(listExerciseFromDatabase);
         adapter = new ExerciseAdapter(this.getActivity(), R.layout.my_listview_layout, filterList);
-=======
-        adapter = new ExerciseAdapter(this.getActivity(), R.layout.my_listview_layout, listExerciseFromDatabase);
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
+
         lvExercise.setAdapter(adapter);
 
 

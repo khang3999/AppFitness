@@ -37,13 +37,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_exercise_layout);
 
-<<<<<<< HEAD
-
-        //Khoi tao
-
-
-=======
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
         // Get action bar back to previous
         // khoi tao cho drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,12 +47,10 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         lvExercises = findViewById(R.id.lvExercise);
         totalWorkouts = findViewById(R.id.txtWorkouts);
         totalMinutes = findViewById(R.id.txtMinutes);
-<<<<<<< HEAD
-        Button btnStart = findViewById(R.id.btnStart);
-=======
-        tvDesc = findViewById(R.id.tvDesc);
 
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
+        Button btnStart = findViewById(R.id.btnStart);
+
+        tvDesc = findViewById(R.id.tvDesc);
 
         // Lay du lieu goi di tu intent cua HomeActivity
         Intent intent = getIntent();
@@ -89,7 +80,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         //set tong thoi gian
         totalMinutes.setText((listExercises.size() * 30) +"");
 
-<<<<<<< HEAD
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,12 +90,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
                 startActivity(intentStartExercise);
             }
         });
-
-
-
-
-=======
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
     }
 
     protected void update(){
@@ -128,11 +113,11 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
             tvDesc.setText("This is list exercises abs.");
         }else if (title.equals("Glutes")){
             tvDesc.setText("This is list exercises glutes.");
+        } else{
+            tvDesc.setText("This is list exercises customize.");
         }
     }
 
-<<<<<<< HEAD
-=======
     @Override
     protected void onStart() {
         super.onStart();
@@ -141,7 +126,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
         lvExercises.setAdapter(adapter);
     }
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
 
 
     @Override

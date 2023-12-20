@@ -30,13 +30,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:text="@string/seconds"
-            android:textSize="@dimen/_16dp"
-=======
+
             android:text="@string/time"
             android:textSize="@dimen/fs_20"
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
+
             android:layout_marginStart="@dimen/_32dp"></TextView>
         <TextView
             android:id="@+id/txtMinutes"

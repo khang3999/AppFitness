@@ -45,16 +45,13 @@
             android:exported="true"
             android:label="@string/title_activity_app"
             android:screenOrientation="portrait"
-<<<<<<< HEAD
             android:theme="@style/Theme.HomeFitness"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-=======
-            android:theme="@style/Theme.HomeFitness" >
->>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -67,12 +64,6 @@
             android:label="@string/title_activity_app"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HomeFitness" >
-
-        </activity>
-        <activity
-            android:name=".activities.WelcomeActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
 
         </activity>
     </application>
