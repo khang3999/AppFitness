@@ -138,7 +138,23 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
         return listAccount;
     }
+    // Update account
+    public boolean updateAccount(int id, String name, double height, double weight) {
+        boolean result = true;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if (sqlite != null) {
+            String sql = "UPDATE " + ACCOUNT_TABLE_NAME + " SET " +ACCOUNT_NAME +" = '" + name + "' , "  + HEIGHT + " = " + height + " , " + WEIGHT + " = " + weight + " WHERE " + ACCOUNT_ID + " = " + id;
+            try {
+                sqlite.execSQL(sql);
 
+            } catch (Exception ex) {
+
+                result = false;
+            }
+
+        }
+        return result;
+    }
     // Delete account
     public int deleteAccount(Account account){
         int result = 0;
@@ -179,7 +195,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String sql = null;
         if (sqlite != null) {
             sql = "SELECT * FROM " + EXERCISE_TABLE_NAME;
-        }
+
         Cursor cursor = sqlite.rawQuery(sql, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -202,7 +218,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
                 lisExercise.add(ex);
             } while (cursor.moveToNext());
-        }
+        }}
         return lisExercise;
     }
 

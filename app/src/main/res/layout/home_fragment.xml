@@ -48,7 +48,7 @@
                 android:id="@+id/imageRecent"
                 android:layout_width="@dimen/img_w"
                 android:layout_height="@dimen/img_w"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_account_img"/>
 
         </LinearLayout>
         <LinearLayout
@@ -61,7 +61,7 @@
                 android:id="@+id/imageFavorite"
                 android:layout_width="@dimen/img_w"
                 android:layout_height="@dimen/img_w"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_account_img"/>
 
         </LinearLayout>
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.homefitness.R;
+import com.example.homefitness.databases.MyDatabase;
 
 import java.text.DecimalFormat;
 
@@ -26,6 +28,9 @@ public class CalculateFragment extends AbstractFragment {
     private TextView lbConclude;
     private Button btnClear;
     private Button  btnUpdateInfo;
+    private MyDatabase myDatabase;
+    private  double height;
+    private  double weight;
     View fragment = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,8 +39,11 @@ public class CalculateFragment extends AbstractFragment {
         // lay giao dien tuong ung dua vao fragment, 3 tham so: layout tuong ung, container , false
         fragment = inflater.inflate(R.layout.calculate_fragment, container, false);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e0607ad712ec2e5e8f5eaabc402c3e9a4960c0a3
         Button btnCalculate = fragment.findViewById(R.id.btnSubmit);
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
@@ -50,8 +58,8 @@ public class CalculateFragment extends AbstractFragment {
             public void onClick(View v) {
                 //Get cac thanh phan cua layout can su li
                 if (!edtWeight.getText().toString().equals("") && !edtHeight.getText().toString().equals("")) {
-                    double height = Double.parseDouble(edtHeight.getText().toString()) / 100;
-                    double weight = Double.parseDouble(edtWeight.getText().toString());
+                     height = Double.parseDouble(edtHeight.getText().toString()) / 100;
+                     weight = Double.parseDouble(edtWeight.getText().toString());
                     tvResult = fragment.findViewById(R.id.tvResult);
                     lbResult = fragment.findViewById(R.id.lbResult);
                     lbConclude = fragment.findViewById(R.id.lbConclude);
@@ -70,18 +78,17 @@ public class CalculateFragment extends AbstractFragment {
                     btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-//                            Account.account.setWeight(weight);
-//                            Account.account.setHeight(height * 100);
-//                            clearData();
-//                            String messBMI = "Update success";
-//                            Toast.makeText(CalculatorBMIActivity.this, messBMI, Toast.LENGTH_SHORT).show();
-//
-//                            Intent intent = new Intent(getActivity(), ProfileAccountActivity.class);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                            startActivity(intent);
-//                            //Update info
-//                            Log.d("w new", "onClick: " + Account.account.getWeight());
-//                            Log.d("h new", "onClick: " + Account.account.getHeight());
+                            myDatabase = new MyDatabase(getActivity());
+                            int id = myDatabase.getAccount().get(0).getId();
+                            String name =  myDatabase.getAccount().get(0).getName();
+                            myDatabase.updateAccount(id,name,height*100,weight);
+                             clearData();
+                            String messBMI = "Update success";
+                            Toast.makeText(getActivity(), messBMI, Toast.LENGTH_SHORT).show();
+
+
+                            Log.d("test", "h new: " + myDatabase.getAccount().get(0).getHeight());
+                            Log.d("test", "w new: " + myDatabase.getAccount().get(0).getWeight());
                         }
                     });
                     //bat su kien clear data
@@ -101,7 +108,10 @@ public class CalculateFragment extends AbstractFragment {
             }
         });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0607ad712ec2e5e8f5eaabc402c3e9a4960c0a3
 
         return fragment;
     }
