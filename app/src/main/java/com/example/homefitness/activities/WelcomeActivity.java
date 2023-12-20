@@ -26,8 +26,8 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.welcome_layout);
 
         myDatabase = new MyDatabase(WelcomeActivity.this);
-        //Account a = new Account("Khang","Male", 165, 80, "aaa", "b,b", "ch");
-        //myDatabase.createAccount(a);
+        Account a = new Account("Khang","Male", 165, 80, "aaa", "b,b", "ch");
+        myDatabase.createAccount(a);
 
 
         if(myDatabase.getAccount().size() != 0){

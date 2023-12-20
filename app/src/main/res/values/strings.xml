@@ -28,9 +28,10 @@
     <string name="add_favorite_list">Add favorite</string>
     <string name="category_name">Category Name</string>
     <string name="workouts">Workouts:</string>
-    <string name="minutes">Minutes:</string>
+    <string name="seconds">Seconds:</string>
     <string name="desc">descdescdescdescdescdescdescdescdescdescdescdescdesc</string>
     <string name="start">Start</string>
 
     <string name="favorite_exercise">Favorite</string>
+    <string name="go">"GO!"</string>
 </resources>

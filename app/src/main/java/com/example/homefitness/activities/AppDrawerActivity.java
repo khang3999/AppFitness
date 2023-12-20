@@ -207,7 +207,7 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuSave){
-            Log.d("test", "Save");
+//            Log.d("test", "Save");
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         return true;
