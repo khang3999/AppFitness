@@ -139,7 +139,6 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
                     // Set lai preview tại nút dang chon
                     preView = view;
                     currentFragment = 3;
-                    Log.d("test", "profile " + currentFragment);
                 }
                 //Update UI
                 updateUI();
