@@ -21,8 +21,6 @@
             android:name=".activities.StartExerciseActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.StartExercise"
-
             android:name=".activities.ChooseTargetActivity"
             android:exported="false" />
         <activity

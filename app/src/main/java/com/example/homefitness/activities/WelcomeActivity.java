@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Khoi tao database
         myDatabase = new MyDatabase(WelcomeActivity.this);
-        Account a = new Account("Khang","Male", 165, 80, "aaa", "b,b", "ch");
+        Account a = new Account("Khang","Male", 165, 80, "aaa", "b,b");
         myDatabase.createAccount(a);
 
         if(myDatabase.getAccount().size() != 0){
