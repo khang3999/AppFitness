@@ -6,7 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import android.view.View;
+import android.widget.Button;
+
 import android.view.MenuItem;
+
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,15 +36,20 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         setContentView(R.layout.list_exercise_layout);
 
 
+        //Khoi tao
+
+
         // Get action bar back to previous
         // khoi tao cho drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         //Khoi tao array
+
         listExercises = new ArrayList<Exercise>();
         lvExercises = findViewById(R.id.lvExercise);
         totalWorkouts = findViewById(R.id.txtWorkouts);
         totalMinutes = findViewById(R.id.txtMinutes);
+        Button btnStart = findViewById(R.id.btnStart);
 
         // Lay du lieu goi di tu intent cua HomeActivity
         Intent intent = getIntent();
@@ -48,6 +58,11 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
 
 
         //Set apdater
+
+
+        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
+        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
+
         if(intent.getSerializableExtra("selectedExercises") == null){
             listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
         }else {
@@ -55,6 +70,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         }
 
         adapter = new ExerciseAdapter(this,R.layout.my_listview_layout, listExercises);
+
         lvExercises.setAdapter(adapter);
 
         //set tong so bai tap
@@ -62,31 +78,24 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         //set tong thoi gian
         totalMinutes.setText((listExercises.size() * 30) +"");
 
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentStartExercise = new Intent(ListExerciseActivity.this, StartExerciseActivity.class);
+                intentStartExercise.putExtra("listExercises",listExercises);
+                intentStartExercise.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intentStartExercise);
+            }
+        });
 
-        // Lay du lieu tu database voi key la categoryName; bo ham api vao day
+
+
 
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("OnStart", "onStart: ");
-        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
-        lvExercises.setAdapter(adapter);
-    }
 
-    @Override
-    protected void onResume() {
-        Log.d("OnResume", "OnResume: ");
-        super.onResume();
-    }
 
-    @Override
-    protected void onRestart() {
-        Log.d("onRestart", "onRestart: ");
-        super.onRestart();
-    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -106,4 +115,5 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
     }
+
 }

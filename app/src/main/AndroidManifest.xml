@@ -15,6 +15,12 @@
         android:theme="@style/Theme.HomeFitness"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ResultExerciseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.StartExerciseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ChooseTargetActivity"
             android:exported="false" />
         <activity
@@ -26,6 +32,7 @@
         <activity
             android:name=".activities.ChooseGenderActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.InputNameActivity"
             android:exported="false" />
