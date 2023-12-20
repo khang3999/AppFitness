@@ -31,10 +31,14 @@ public class ProfileFragment extends AbstractFragment {
     private EditText lbName;
     private EditText tvHeight;
     private EditText tvWeight;
+    private TextView tvBMI;
+    private TextView tvConclude;
+    private TextView tvTarget;
+    private View fragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View fragment = null;
+         fragment = null;
         // lay giao dien tuong ung dua vao fragment, 3 tham so: layout tuong ung, container , false
         fragment = inflater.inflate(R.layout.profile_fragment, container, false);
 
@@ -42,23 +46,10 @@ public class ProfileFragment extends AbstractFragment {
         myDatabase = new MyDatabase(getActivity());
         account  =new Account();
         account  = myDatabase.getAccount().get(0);
+        Log.d("test", "h pro: "+account.getHeight());
+        Log.d("test", "w pro: "+account.getWeight());
 
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-         lbName = fragment.findViewById(R.id.lbName);
-        lbName.setText(account.getName());
-         tvHeight = fragment.findViewById(R.id.tvHeight);
-        tvHeight.setText(account.getHeight()+"");
-         tvWeight = fragment.findViewById(R.id.tvWeight);
-        tvWeight.setText(account.getWeight()+"");
-        TextView tvBMI = fragment.findViewById(R.id.tvBMI);
-
-       double bmi = calculateBMI(account.getHeight(),account.getWeight());
-        tvBMI.setText(decimalFormat.format(bmi));
-        TextView tvConclude = fragment.findViewById(R.id.tvConclude);
-        tvConclude.setText("You're "+CalculateFragment.getConclude(bmi));
-
-        TextView tvTarget= fragment.findViewById(R.id.tvTarget);
-        tvTarget.setText(account.getTarget());
+        updateSetText(fragment);
 
         Button btnEdit = fragment.findViewById(R.id.btnEdit);
         Button btnSubmit = fragment.findViewById(R.id.btnSubmit);
@@ -90,7 +81,7 @@ public class ProfileFragment extends AbstractFragment {
                     tvHeight.setText(tvHeight.getText().toString());
                     tvWeight.setText(tvWeight.getText().toString());
 
-
+                    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
                     tvBMI.setText(decimalFormat.format(calculateBMI(hei,wei)));
 
                     tvConclude.setText("You're "+CalculateFragment.getConclude(calculateBMI(hei,wei)));
@@ -123,5 +114,30 @@ public class ProfileFragment extends AbstractFragment {
         double bmi = weight/(height/100*height/100);
 
         return bmi;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateSetText(fragment);
+    }
+
+    private void updateSetText(View fragment){
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        lbName = fragment.findViewById(R.id.lbName);
+        lbName.setText(account.getName());
+        tvHeight = fragment.findViewById(R.id.tvHeight);
+        tvHeight.setText(account.getHeight()+"");
+        tvWeight = fragment.findViewById(R.id.tvWeight);
+        tvWeight.setText(account.getWeight()+"");
+         tvBMI = fragment.findViewById(R.id.tvBMI);
+
+        double bmi = calculateBMI(account.getHeight(),account.getWeight());
+        tvBMI.setText(decimalFormat.format(bmi));
+         tvConclude = fragment.findViewById(R.id.tvConclude);
+        tvConclude.setText("You're "+CalculateFragment.getConclude(bmi));
+
+         tvTarget= fragment.findViewById(R.id.tvTarget);
+        tvTarget.setText(account.getTarget());
     }
 }

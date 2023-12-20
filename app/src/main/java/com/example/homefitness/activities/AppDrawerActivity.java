@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.homefitness.R;
+import com.example.homefitness.databases.MyDatabase;
 import com.example.homefitness.databinding.AppDrawerLayoutBinding;
 import com.example.homefitness.databinding.MyListviewLayoutBinding;
 import com.example.homefitness.fragments.AbstractFragment;
@@ -22,6 +23,7 @@ import com.example.homefitness.fragments.CalculateFragment;
 import com.example.homefitness.fragments.ExerciseFragment;
 import com.example.homefitness.fragments.HomeFragment;
 import com.example.homefitness.fragments.ProfileFragment;
+import com.example.homefitness.models.Account;
 import com.google.android.material.navigation.NavigationView;
 
 public class AppDrawerActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +38,8 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
     private DrawerLayout drawerLayout;
 
     private View preView;
+    private Account account;
+    private MyDatabase myDatabase;
     private boolean doubleBackToExitPressedOnce = false;
 
     private static final long BACK_PRESS_DELAY = 2000; // Thời gian giữa 2 lần nhấn nút back
@@ -45,7 +49,8 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         super.onCreate(savedInstanceState);
         // dieu kien man hinh app_drawer_layout
         setContentView(R.layout.app_drawer_layout);
-
+myDatabase = new MyDatabase(this);
+        account = myDatabase.getAccount().get(0);
         //Khoi tao binding
         binding = AppDrawerLayoutBinding.inflate(getLayoutInflater());
         // Gán view cho binding
@@ -214,22 +219,7 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         }
         return true;
     }
-//    @Override
-//    public void onBackPressed() {
-//        // Kiểm tra thời điểm lần cuối cùng nhấn nút back
-//
-//        if (System.currentTimeMillis() - backPressTime < BACK_PRESS_DELAY) {
-//            // Nếu đã nhấn nút back 2 lần trong khoảng thời gian quy định, thoát ứng dụng
-//            super.onBackPressed();
-//            finishAffinity();
-//
-//
-//        } else {
-//            // Nếu là lần nhấn đầu tiên, thông báo để người dùng biết cần nhấn thêm một lần nữa để thoát
-//            Toast.makeText(this, "Nhấn back thêm một lần nữa để thoát", Toast.LENGTH_SHORT).show();
-//            backPressTime = System.currentTimeMillis();
-//        }
-//    }
+
 @Override
 public void onBackPressed() {
     if (doubleBackToExitPressedOnce) {
@@ -250,5 +240,7 @@ public void onBackPressed() {
             },
             2000 // Thời gian chờ (đơn vị: milliseconds)
     );
+
 }
+
 }
