@@ -90,16 +90,10 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
 
 
 
+
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("OnStart", "onStart: ");
-        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
-        lvExercises.setAdapter(adapter);
-    }
 
 
     @Override

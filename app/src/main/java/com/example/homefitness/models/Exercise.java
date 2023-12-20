@@ -99,6 +99,7 @@ public class Exercise implements Serializable {
         this.categoryId = "";
     }
 
+
     @Override
     public String toString() {
         return "Exercise{" +
