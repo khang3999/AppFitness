@@ -17,15 +17,14 @@ import androidx.room.RoomDatabase;
         private double height;
         private double weight;
         private String target;
-        private String favoriteList;
-        private String idRecentExercise;
+        private String listIdRecentExercise;
 
-        public String getIdRecentExercise() {
-            return idRecentExercise;
+        public String getListIdRecentExercise() {
+            return listIdRecentExercise;
         }
 
-        public void setIdRecentExercise(String idRecentExercise) {
-            this.idRecentExercise = idRecentExercise;
+        public void setListIdRecentExercise(String listIdRecentExercise) {
+            this.listIdRecentExercise = listIdRecentExercise;
         }
 
         public int getId() {
@@ -76,34 +75,15 @@ import androidx.room.RoomDatabase;
         this.target = target;
     }
 
-    public String getFavoriteList() {
-        return favoriteList;
-    }
 
-    public void setFavoriteList(String favoriteList) {
-        this.favoriteList = favoriteList;
-    }
-
-    public Account(int id, String name, String gender, double height, double weight, String target, String favoriteList, String idRecentExercise) {
-            this.id = id;
-            this.name = name;
-            this.gender = gender;
-            this.height = height;
-            this.weight = weight;
-            this.target = target;
-            this.favoriteList = favoriteList;
-            this.idRecentExercise =idRecentExercise;
-        }
-
-        public Account( String name, String gender, double height, double weight, String target, String favoriteList, String idRecentExercise) {
+        public Account( String name, String gender, double height, double weight, String target, String listIdRecentExercise) {
 
             this.name = name;
             this.gender = gender;
             this.height = height;
             this.weight = weight;
             this.target = target;
-            this.favoriteList = favoriteList;
-            this.idRecentExercise = idRecentExercise;
+            this.listIdRecentExercise = listIdRecentExercise;
         }
         public Account() {
             this.id = 1;
@@ -112,8 +92,7 @@ import androidx.room.RoomDatabase;
             this.height = 0;
             this.weight = 0;
             this.target = "unknown";
-            this.favoriteList = "unknown";
-            this.idRecentExercise="unknown";
+            this.listIdRecentExercise="";
         }
         @NonNull
         @Override

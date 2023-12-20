@@ -6,8 +6,6 @@ import java.io.Serializable;
 public class Exercise implements Serializable {
 
     private int id;
-
-
     private String gifName;
 
     private int time  = 30;
@@ -17,6 +15,15 @@ public class Exercise implements Serializable {
     private int indexGifInDrawable;
 
     private String categoryId;
+    private int favorite;
+
+    public int getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(int favorite) {
+        this.favorite = favorite;
+    }
 
     public int getId() {
         return id;
@@ -72,15 +79,18 @@ public class Exercise implements Serializable {
         this.time = 30;
         this.indexGifInDrawable = 0;
         this.categoryId = "";
+        this.favorite = 0;
     }
 
-    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable, String categoryId) {
+    public Exercise(String gifName, int time, int calorie, int indexGifInDrawable, String categoryId, int favorite) {
         this.gifName = gifName;
         this.calorie = calorie;
         this.time = time;
         this.indexGifInDrawable = indexGifInDrawable;
         this.categoryId = categoryId;
+        this.favorite = favorite;
     }
+
     public Exercise(String gifName, int time, int calorie, int indexGifInDrawable) {
         this.gifName = gifName;
         this.calorie = calorie;

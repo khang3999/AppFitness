@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 
 import com.example.homefitness.models.Account;
+import com.example.homefitness.models.Category;
+import com.example.homefitness.models.Exercise;
 
 import java.util.ArrayList;
 
@@ -29,8 +31,8 @@ public class MyDatabase extends SQLiteOpenHelper {
     public final static String WEIGHT = "weight";
 
     public final static String TARGET = "target";
-    public final static String FAVORITE = "favorite";
-    public final static String ID_RECENT_EXERCISE = "id_recent_execise";
+
+    public final static String LIST_ID_RECENT_EXERCISE = "list_id_recent_exercise";
 
     // Cac column cua table exercise
     public final static String EXERCISE_TABLE_NAME = "exercises";
@@ -46,6 +48,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     public final static String INDEX_GIF_IN_DRAWABLE = "index_gif_in_drawable";
 
     public final static String CATEGORY_ID = "category_id";
+    public final static String FAVORITE = "favorite";
 
     // Cac column cua table category
     public final static String CATEGORY_TABLE_NAME = "categories";
@@ -65,14 +68,14 @@ public class MyDatabase extends SQLiteOpenHelper {
             // SQL ACCOUNT
             String sql = "CREATE TABLE " + ACCOUNT_TABLE_NAME + "(" + ACCOUNT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + ACCOUNT_NAME + " VARCHAR (255) , " + GENDER + " VARCHAR (255) , " + HEIGHT + " DOUBLE , " + WEIGHT + " DOUBLE , "
-                    + TARGET + " VARCHAR (255) ," + FAVORITE + " VARCHAR (255), "+ ID_RECENT_EXERCISE + " VARCHAR (255)); " ;
+                    + TARGET + " VARCHAR (255) ," + LIST_ID_RECENT_EXERCISE + " VARCHAR (255) ); ";
             // Create table account
             db.execSQL(sql);
 
             // SQL EXERCISE
             sql = "CREATE TABLE " + EXERCISE_TABLE_NAME + "(" + EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + GIF_NAME + " VARCHAR (255) , " + TIME + " INTEGER , "
-                    + CALORIE + " INTEGER ," + INDEX_GIF_IN_DRAWABLE + " INTEGER , " + CATEGORY_ID + " VARCHAR (255) );" ;
+                    + CALORIE + " INTEGER ," + INDEX_GIF_IN_DRAWABLE + " INTEGER , " + CATEGORY_ID + " VARCHAR (255), " + FAVORITE + " INTEGER);" ;
             // Create table EXERCISE
             db.execSQL(sql);
 
@@ -96,6 +99,7 @@ public class MyDatabase extends SQLiteOpenHelper {
             contentValues.put(HEIGHT, account.getHeight());
             contentValues.put(WEIGHT, account.getWeight());
             contentValues.put(TARGET, account.getTarget());
+            contentValues.put(LIST_ID_RECENT_EXERCISE, account.getListIdRecentExercise());
             result = (int) sqlite.insert(ACCOUNT_TABLE_NAME, null, contentValues);
             sqlite.close();
         }
@@ -117,8 +121,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                     int iHeight = cursor.getColumnIndex(HEIGHT);
                     int iWeight = cursor.getColumnIndex(WEIGHT);
                     int iTarget = cursor.getColumnIndex(TARGET);
-                    int iFavorite = cursor.getColumnIndex(FAVORITE);
-                    int iRecent = cursor.getColumnIndex(ID_RECENT_EXERCISE);
+                    int iRecent = cursor.getColumnIndex(LIST_ID_RECENT_EXERCISE);
 
 
                     ac.setId(cursor.getInt(iId));
@@ -127,8 +130,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                     ac.setHeight(cursor.getDouble(iHeight));
                     ac.setWeight(cursor.getDouble(iWeight));
                     ac.setTarget(cursor.getString(iTarget));
-                    ac.setFavoriteList(cursor.getString(iFavorite));
-                    ac.setIdRecentExercise(cursor.getString(iRecent));
+                    ac.setListIdRecentExercise(cursor.getString(iRecent));
 
                     listAccount.add(ac);
                 }while (cursor.moveToNext());
@@ -136,6 +138,206 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
         return listAccount;
     }
+
+    // Delete account
+    public int deleteAccount(Account account){
+        int result = 0;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if(sqlite != null){
+            String sql = "DELETE FROM " + ACCOUNT_TABLE_NAME + " WHERE " + ACCOUNT_ID + " LIKE " + account.getId();
+            ContentValues contentValues = new ContentValues();
+            result = (int) sqlite.delete(ACCOUNT_TABLE_NAME, ACCOUNT_ID + " = ? ", new String[] {account.getId() +""});
+            sqlite.close();
+        }
+        return result;
+    }
+    // ------ ACCOUNT END -------
+
+
+
+    // ------ EXERCISE START ------
+    public int createExercise(Exercise exercise){
+        int result = 0;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if(sqlite != null){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(GIF_NAME, exercise.getGifName());
+            contentValues.put(TIME, exercise.getTime());
+            contentValues.put(CALORIE, exercise.getCalorie());
+            contentValues.put(INDEX_GIF_IN_DRAWABLE, exercise.getIndexGifInDrawable());
+            contentValues.put(CATEGORY_ID, exercise.getCategoryId());
+            contentValues.put(FAVORITE, exercise.getFavorite());
+            result = (int) sqlite.insert(EXERCISE_TABLE_NAME, null, contentValues);
+            sqlite.close();
+        }
+        return result;
+    }
+    // lay danh sach tat ca san pham
+    public ArrayList<Exercise> getAllExercise() {
+        ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        SQLiteDatabase sqlite = getWritableDatabase();
+        String sql = null;
+        if (sqlite != null) {
+            sql = "SELECT * FROM " + EXERCISE_TABLE_NAME;
+        }
+        Cursor cursor = sqlite.rawQuery(sql, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                Exercise ex = new Exercise();
+                int iId = cursor.getColumnIndex(EXERCISE_ID);
+                int iName = cursor.getColumnIndex(GIF_NAME);
+                int iTime = cursor.getColumnIndex(TIME);
+                int iCalorie = cursor.getColumnIndex(CALORIE);
+                int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                int iFavorite = cursor.getColumnIndex(FAVORITE);
+
+                ex.setId(cursor.getInt(iId));
+                ex.setGifName(cursor.getString(iName));
+                ex.setTime(cursor.getInt(iTime));
+                ex.setCalorie(cursor.getInt(iCalorie));
+                ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                ex.setCategoryId(cursor.getString(iCategoryId));
+                ex.setFavorite(cursor.getInt(iFavorite));
+
+                lisExercise.add(ex);
+            } while (cursor.moveToNext());
+        }
+        return lisExercise;
+    }
+
+    // Lay san pham theo danh muc
+    public ArrayList<Exercise> getExerciseByCategoryId(String categoryId) {
+        ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        SQLiteDatabase sqlite = getWritableDatabase();
+
+        if (sqlite != null) {
+            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + CATEGORY_ID + " LIKE '" + categoryId + "'";
+            Cursor cursor = sqlite.rawQuery(sql, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Exercise ex = new Exercise();
+                    int iId = cursor.getColumnIndex(EXERCISE_ID);
+                    int iName = cursor.getColumnIndex(GIF_NAME);
+                    int iTime = cursor.getColumnIndex(TIME);
+                    int iCalorie = cursor.getColumnIndex(CALORIE);
+                    int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                    int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                    int iFavorite = cursor.getColumnIndex(FAVORITE);
+
+                    ex.setId(cursor.getInt(iId));
+                    ex.setGifName(cursor.getString(iName));
+                    ex.setTime(cursor.getInt(iTime));
+                    ex.setCalorie(cursor.getInt(iCalorie));
+                    ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                    ex.setCategoryId(cursor.getString(iCategoryId));
+                    ex.setFavorite(cursor.getInt(iFavorite));
+
+                    lisExercise.add(ex);
+                } while (cursor.moveToNext());
+            }
+        }
+        return lisExercise;
+    }
+
+    // Lay danh sach yeu thich
+    public ArrayList<Exercise> getExerciseFavorite() {
+        ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        SQLiteDatabase sqlite = getWritableDatabase();
+
+        if (sqlite != null) {
+            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + FAVORITE + " LIKE 1 ";
+
+            Cursor cursor = sqlite.rawQuery(sql, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Exercise ex = new Exercise();
+                    int iId = cursor.getColumnIndex(EXERCISE_ID);
+                    int iName = cursor.getColumnIndex(GIF_NAME);
+                    int iTime = cursor.getColumnIndex(TIME);
+                    int iCalorie = cursor.getColumnIndex(CALORIE);
+                    int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                    int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                    int iFavorite = cursor.getColumnIndex(FAVORITE);
+
+                    ex.setId(cursor.getInt(iId));
+                    ex.setGifName(cursor.getString(iName));
+                    ex.setTime(cursor.getInt(iTime));
+                    ex.setCalorie(cursor.getInt(iCalorie));
+                    ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                    ex.setCategoryId(cursor.getString(iCategoryId));
+                    ex.setFavorite(cursor.getInt(iFavorite));
+
+                    lisExercise.add(ex);
+                } while (cursor.moveToNext());
+            }
+        }
+        return lisExercise;
+    }
+
+    // Lay danh sach bai tap cuoi cung
+    public ArrayList<Exercise> getListRecentExercise(String strRecentExerciseId) {
+        ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        String[] arrStr =  strRecentExerciseId.split(",");
+        int[] arrRecentExerciseId = new int[arrStr.length];
+        String temp ="";
+        for (int i = 0; i < arrStr.length; i++){
+            arrRecentExerciseId[i] = Integer.parseInt(arrStr[i]);
+            temp += arrRecentExerciseId[i] + " , ";
+        }
+        temp = temp.trim();
+        temp = temp.substring(0, temp.length() - 1);
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if (sqlite != null) {
+            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + EXERCISE_ID + " IN ( " + temp + " )";
+            Cursor cursor = sqlite.rawQuery(sql, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Exercise ex = new Exercise();
+                    int iId = cursor.getColumnIndex(EXERCISE_ID);
+                    int iName = cursor.getColumnIndex(GIF_NAME);
+                    int iTime = cursor.getColumnIndex(TIME);
+                    int iCalorie = cursor.getColumnIndex(CALORIE);
+                    int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                    int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                    int iFavorite = cursor.getColumnIndex(FAVORITE);
+
+                    ex.setId(cursor.getInt(iId));
+                    ex.setGifName(cursor.getString(iName));
+                    ex.setTime(cursor.getInt(iTime));
+                    ex.setCalorie(cursor.getInt(iCalorie));
+                    ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                    ex.setCategoryId(cursor.getString(iCategoryId));
+                    ex.setFavorite(cursor.getInt(iFavorite));
+
+                    lisExercise.add(ex);
+                } while (cursor.moveToNext());
+            }
+        }
+        return lisExercise;
+    }
+        // ------ EXERCISE END -------
+
+
+
+        // ------ CATEGORY START -------
+        public int createCategory(Category category){
+            int result = 0;
+            SQLiteDatabase sqlite = getWritableDatabase();
+            if(sqlite != null){
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(CATEGORY_ID, category.getCategoryId());
+                contentValues.put(CATEGORY_NAME, category.getCategoryName());
+                contentValues.put(INDEX_CATEGORY_IN_DRAWABLE, category.getIndexCategoryInDrawable());
+
+                result = (int) sqlite.insert(CATEGORY_TABLE_NAME, null, contentValues);
+                sqlite.close();
+            }
+            return result;
+        }
+
+        // ------ CATEGORY END -------
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

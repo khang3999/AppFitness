@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.homefitness.R;
@@ -35,8 +36,10 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
     private DrawerLayout drawerLayout;
 
     private View preView;
+    private boolean doubleBackToExitPressedOnce = false;
 
-
+    private static final long BACK_PRESS_DELAY = 2000; // Thời gian giữa 2 lần nhấn nút back
+    private long backPressTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,5 +215,41 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         }
         return true;
     }
+//    @Override
+//    public void onBackPressed() {
+//        // Kiểm tra thời điểm lần cuối cùng nhấn nút back
+//
+//        if (System.currentTimeMillis() - backPressTime < BACK_PRESS_DELAY) {
+//            // Nếu đã nhấn nút back 2 lần trong khoảng thời gian quy định, thoát ứng dụng
+//            super.onBackPressed();
+//            finishAffinity();
+//
+//
+//        } else {
+//            // Nếu là lần nhấn đầu tiên, thông báo để người dùng biết cần nhấn thêm một lần nữa để thoát
+//            Toast.makeText(this, "Nhấn back thêm một lần nữa để thoát", Toast.LENGTH_SHORT).show();
+//            backPressTime = System.currentTimeMillis();
+//        }
+//    }
+@Override
+public void onBackPressed() {
+    if (doubleBackToExitPressedOnce) {
+        super.finishAffinity();
+        return;
+    }
 
+    this.doubleBackToExitPressedOnce = true;
+    Toast.makeText(this, "Nhấn back thêm một lần nữa để thoát", Toast.LENGTH_SHORT).show();
+
+    // Đặt thời gian chờ để reset cờ khi không có lần nhấn nào xảy ra trong khoảng thời gian quy định
+    new android.os.Handler().postDelayed(
+            new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            },
+            2000 // Thời gian chờ (đơn vị: milliseconds)
+    );
+}
 }
