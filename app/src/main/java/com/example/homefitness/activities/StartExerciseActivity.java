@@ -42,7 +42,7 @@ public class StartExerciseActivity extends AppCompatActivity {
         listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
 
 //        //set up array render exercise
-         Exercise restGIF = new Exercise("rest",10,0,R.drawable.gif_rest_5);
+         Exercise restGIF = new Exercise("rest",10,0,R.drawable.gif_rest_5,"",0);
         renderingExercises.addAll(listExercises);
         //them 1 gif rest sau moi 3 bai tap
         for (int i = 0; i < renderingExercises.size() ; i++) {
