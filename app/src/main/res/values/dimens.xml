@@ -10,4 +10,6 @@
     <dimen name="_8dp">8dp</dimen>
     <dimen name="img_w">120dp</dimen>
     <dimen name="fs_20">20sp</dimen>
+    <dimen name="_64dp">64dp</dimen>
+    <dimen name="_90dp">90dp</dimen>
 </resources>
