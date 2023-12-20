@@ -156,6 +156,8 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 
     // ------ EXERCISE START ------
+   
+
     public int createExercise(Exercise exercise){
         int result = 0;
         SQLiteDatabase sqlite = getWritableDatabase();
