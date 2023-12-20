@@ -17,14 +17,14 @@ import androidx.room.RoomDatabase;
         private double height;
         private double weight;
         private String target;
-        private int idRecentExercise;
+        private String listIdRecentExercise;
 
-        public int getIdRecentExercise() {
-            return idRecentExercise;
+        public String getListIdRecentExercise() {
+            return listIdRecentExercise;
         }
 
-        public void setIdRecentExercise(int idRecentExercise) {
-            this.idRecentExercise = idRecentExercise;
+        public void setListIdRecentExercise(String listIdRecentExercise) {
+            this.listIdRecentExercise = listIdRecentExercise;
         }
 
         public int getId() {
@@ -76,25 +76,14 @@ import androidx.room.RoomDatabase;
     }
 
 
-
-    public Account(int id, String name, String gender, double height, double weight, String target, int idRecentExercise) {
-            this.id = id;
-            this.name = name;
-            this.gender = gender;
-            this.height = height;
-            this.weight = weight;
-            this.target = target;
-            this.idRecentExercise =idRecentExercise;
-        }
-
-        public Account( String name, String gender, double height, double weight, String target, int idRecentExercise) {
+        public Account( String name, String gender, double height, double weight, String target, String listIdRecentExercise) {
 
             this.name = name;
             this.gender = gender;
             this.height = height;
             this.weight = weight;
             this.target = target;
-            this.idRecentExercise = idRecentExercise;
+            this.listIdRecentExercise = listIdRecentExercise;
         }
         public Account() {
             this.id = 1;
@@ -103,7 +92,7 @@ import androidx.room.RoomDatabase;
             this.height = 0;
             this.weight = 0;
             this.target = "unknown";
-            this.idRecentExercise=0;
+            this.listIdRecentExercise="";
         }
         @NonNull
         @Override
