@@ -55,11 +55,11 @@ public class HomeFragment extends AbstractFragment   {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
                 Account ac = myDatabase.getAccount().get(0);
-                String recent = ac.getIdRecentExercise();
-                ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
-                listExerciseByCategory = myDatabase.getExerciseByCategoryId(recent);
+//                int recent = ac.getIdRecentExercise();
+//                ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
+//                listExerciseByCategory = myDatabase.getExerciseByCategoryId(recent);
                 // chuyển thêm dữ liệu
-                intent.putExtra("listExerciseByCategory", listExerciseByCategory);
+                //intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }

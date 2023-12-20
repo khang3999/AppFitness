@@ -38,7 +38,8 @@
             android:exported="true"
             android:label="@string/title_activity_app"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HomeFitness" />
+            android:theme="@style/Theme.HomeFitness"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="true"
