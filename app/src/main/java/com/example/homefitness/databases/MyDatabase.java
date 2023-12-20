@@ -179,29 +179,30 @@ public class MyDatabase extends SQLiteOpenHelper {
         String sql = null;
         if (sqlite != null) {
             sql = "SELECT * FROM " + EXERCISE_TABLE_NAME;
-        }
-        Cursor cursor = sqlite.rawQuery(sql, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                Exercise ex = new Exercise();
-                int iId = cursor.getColumnIndex(EXERCISE_ID);
-                int iName = cursor.getColumnIndex(GIF_NAME);
-                int iTime = cursor.getColumnIndex(TIME);
-                int iCalorie = cursor.getColumnIndex(CALORIE);
-                int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
-                int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
-                int iFavorite = cursor.getColumnIndex(FAVORITE);
 
-                ex.setId(cursor.getInt(iId));
-                ex.setGifName(cursor.getString(iName));
-                ex.setTime(cursor.getInt(iTime));
-                ex.setCalorie(cursor.getInt(iCalorie));
-                ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
-                ex.setCategoryId(cursor.getString(iCategoryId));
-                ex.setFavorite(cursor.getInt(iFavorite));
+            Cursor cursor = sqlite.rawQuery(sql, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Exercise ex = new Exercise();
+                    int iId = cursor.getColumnIndex(EXERCISE_ID);
+                    int iName = cursor.getColumnIndex(GIF_NAME);
+                    int iTime = cursor.getColumnIndex(TIME);
+                    int iCalorie = cursor.getColumnIndex(CALORIE);
+                    int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                    int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                    int iFavorite = cursor.getColumnIndex(FAVORITE);
 
-                lisExercise.add(ex);
-            } while (cursor.moveToNext());
+                    ex.setId(cursor.getInt(iId));
+                    ex.setGifName(cursor.getString(iName));
+                    ex.setTime(cursor.getInt(iTime));
+                    ex.setCalorie(cursor.getInt(iCalorie));
+                    ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                    ex.setCategoryId(cursor.getString(iCategoryId));
+                    ex.setFavorite(cursor.getInt(iFavorite));
+
+                    lisExercise.add(ex);
+                } while (cursor.moveToNext());
+            }
         }
         return lisExercise;
     }

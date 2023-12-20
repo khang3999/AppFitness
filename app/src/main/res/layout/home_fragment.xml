@@ -80,83 +80,127 @@
         android:layout_height="0dp"
         android:layout_weight="7">
 
-        <ImageView
-            android:id="@+id/imageChest"
-            android:layout_width="@dimen/img_w"
-            android:layout_height="@dimen/img_w"
-            android:layout_gravity="center"
-            android:src="@drawable/chest"
-            app:layout_constraintBottom_toTopOf="@+id/imageBiceps"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewChest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cardViewBiceps"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            android:background="@drawable/rounded_corner" />
+            app:cardCornerRadius="@dimen/radius_20">
 
-        <ImageView
-            android:id="@+id/imageShoulder"
-            android:layout_width="@dimen/img_w"
-            android:layout_height="@dimen/img_w"
-            android:layout_gravity="center"
-            android:src="@drawable/shoulder"
-            app:layout_constraintBottom_toBottomOf="@+id/imageChest"
+            <ImageView
+                android:id="@+id/imageChest"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_chest_foreground"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewShoulder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewChest"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toTopOf="@+id/imageChest"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toTopOf="@+id/cardViewChest"
+            app:cardCornerRadius="@dimen/radius_20">
 
-        <ImageView
-            android:id="@+id/imageBiceps"
-            android:layout_width="@dimen/img_w"
-            android:layout_height="@dimen/img_w"
-            android:layout_gravity="center"
-            android:src="@drawable/biceps"
-            app:layout_constraintBottom_toTopOf="@+id/imageAbs"
+            <ImageView
+                android:id="@+id/imageShoulder"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_shoulder_foreground"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewBiceps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cardViewAbs"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageChest"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewChest"
+            app:layout_constraintVertical_bias="0.5"
+            app:cardCornerRadius="@dimen/radius_20">
 
-        <ImageView
-            android:id="@+id/imageTriceps"
-            android:layout_width="@dimen/img_w"
-            android:layout_height="@dimen/img_w"
-            android:layout_gravity="center"
-            android:src="@drawable/triceps"
-            app:layout_constraintBottom_toBottomOf="@+id/imageBiceps"
+            <ImageView
+                android:id="@+id/imageBiceps"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_biceps_foreground"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewTriceps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewBiceps"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toTopOf="@+id/imageBiceps"
-            app:layout_constraintVertical_bias="0.5" />
-        <ImageView
-            android:id="@+id/imageAbs"
-            android:layout_width="@dimen/img_w"
-            android:layout_height="@dimen/img_w"
-            android:layout_gravity="center"
-            android:src="@drawable/abs"
+            app:layout_constraintTop_toTopOf="@+id/cardViewBiceps"
+            app:cardCornerRadius="@dimen/radius_20">
+
+            <ImageView
+                android:id="@+id/imageTriceps"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_triceps_foreground"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewGlutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewAbs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="@+id/cardViewAbs"
+            app:layout_constraintVertical_bias="0.15"
+            app:cardCornerRadius="@dimen/radius_20">
+
+            <ImageView
+                android:id="@+id/imageGlutes"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_glutes_foreground"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewAbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageBiceps"
-            app:layout_constraintVertical_bias="0.5" />
-        <ImageView
-            android:id="@+id/imageGlutes"
-            android:layout_width="@dimen/img_w"
-            android:layout_height="@dimen/img_w"
-            android:layout_gravity="center"
-            android:src="@drawable/glutes"
-            app:layout_constraintBottom_toBottomOf="@+id/imageAbs"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toTopOf="@+id/imageAbs"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewBiceps"
+            app:layout_constraintVertical_bias="0.5"
+            app:cardCornerRadius="@dimen/radius_20">
+
+            <ImageView
+                android:id="@+id/imageAbs"
+                android:layout_width="@dimen/img_w"
+                android:layout_height="@dimen/img_w"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_abs_foreground"/>
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -42,7 +42,8 @@ public class CreateDataActivity extends AppCompatActivity {
 
                 clearData();
                 binding.nameGifData.requestFocus();
-                Log.d("test", "onClick: " + ex.getGifName());
+                Log.d("test", "name: " + ex.getGifName());
+                Log.d("test", "size: " + ex.getIndexGifInDrawable());
             }
         });
         binding.btnCategory.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,7 @@ public class CreateDataActivity extends AppCompatActivity {
                 clearData();
                 binding.idCateData1.requestFocus();
                 Log.d("test", "cate : " + cate.getIndexCategoryInDrawable());
+                Log.d("test", "size: " + cate.getIndexCategoryInDrawable());
             }
         });
     }
@@ -66,5 +68,7 @@ public class CreateDataActivity extends AppCompatActivity {
         binding.nameGifData.setText("");
         binding.idCateData.setText("");
         binding.calorieData.setText("");
+        binding.idCateData1.setText("");
+        binding.nameCateData.setText("");
     }
 }

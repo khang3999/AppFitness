@@ -35,7 +35,7 @@ public class CalculateFragment extends AbstractFragment {
         fragment = inflater.inflate(R.layout.calculate_fragment, container, false);
 
 
-<<<<<<< HEAD
+
         Button btnCalculate = fragment.findViewById(R.id.btnSubmit);
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
@@ -101,8 +101,7 @@ public class CalculateFragment extends AbstractFragment {
             }
         });
 
-=======
->>>>>>> origin/khang
+
 
         return fragment;
     }

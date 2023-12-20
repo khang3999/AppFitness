@@ -10,4 +10,5 @@
     <dimen name="_8dp">8dp</dimen>
     <dimen name="img_w">120dp</dimen>
     <dimen name="fs_20">20sp</dimen>
+    <dimen name="radius_20">20dp</dimen>
 </resources>
