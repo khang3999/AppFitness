@@ -38,18 +38,20 @@
             android:exported="true"
             android:label="@string/title_activity_app"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HomeFitness" />
-        <activity
-            android:name=".activities.CreateDataActivity"
-            android:exported="true"
-            android:label="@string/title_activity_app"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.HomeFitness" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CreateDataActivity"
+            android:exported="true"
+            android:label="@string/title_activity_app"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HomeFitness" >
+
         </activity>
         <activity
             android:name=".activities.WelcomeActivity"

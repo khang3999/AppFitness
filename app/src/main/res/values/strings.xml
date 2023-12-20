@@ -22,7 +22,7 @@
     <string name="openDrawer">Open</string>
     <string name="closeDrawer">Close</string>
     <string name="exercise_1">Exercise 1</string>
-    <string name="time">Time = 30s</string>
+    <string name="time">Time :</string>
     <string name="search_here">Search here</string>
 
     <string name="get_list">Get Started</string>

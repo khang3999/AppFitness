@@ -60,6 +60,7 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getListRecentExercise(listIdRecentExercise);
                 // chuyển thêm dữ liệu
+                intent.putExtra("title", "Recent");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -72,6 +73,7 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseFavorite();
                 // chuyển thêm dữ liệu
+                intent.putExtra("title", "Favorite");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -85,6 +87,7 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
+                intent.putExtra("title", "Chest");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -99,6 +102,8 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
+
+                intent.putExtra("title", "Shoulder");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -113,6 +118,8 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
+
+                intent.putExtra("title", "Biceps");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -127,6 +134,8 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
+
+                intent.putExtra("title", "Triceps");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -141,6 +150,8 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
+
+                intent.putExtra("title", "Abs");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -155,6 +166,8 @@ public class HomeFragment extends AbstractFragment   {
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseByCategoryId(categoryId);
                 // chuyển thêm dữ liệu
+
+                intent.putExtra("Glutes", "Recent");
                 intent.putExtra("listExerciseByCategory", listExerciseByCategory);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);

@@ -24,12 +24,13 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     private ListView lvExercises;
     private TextView totalWorkouts;
     private TextView totalMinutes;
+    private TextView tvDesc;
     private ExerciseAdapter adapter;
+    private String title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_exercise_layout);
-
 
         // Get action bar back to previous
         // khoi tao cho drawer
@@ -40,12 +41,15 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         lvExercises = findViewById(R.id.lvExercise);
         totalWorkouts = findViewById(R.id.txtWorkouts);
         totalMinutes = findViewById(R.id.txtMinutes);
+        tvDesc = findViewById(R.id.tvDesc);
+
 
         // Lay du lieu goi di tu intent cua HomeActivity
         Intent intent = getIntent();
-        // Lấy dữ liệu kiểu chuỗi (ví dụ: getStringExtra)
-        String categoryName = intent.getStringExtra("categoryName");
 
+
+        // Lấy dữ liệu kiểu chuỗi (ví dụ: getStringExtra)
+        update();
 
         //Set apdater
         if(intent.getSerializableExtra("selectedExercises") == null){
@@ -62,16 +66,37 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         //set tong thoi gian
         totalMinutes.setText((listExercises.size() * 30) +"");
 
-
-        // Lay du lieu tu database voi key la categoryName; bo ham api vao day
-
     }
 
+    protected void update(){
+        // Lay du lieu goi di tu intent cua HomeActivity
+        Intent intent = getIntent();
+        title = intent.getStringExtra("title");
+        setTitle(title);
+        if (title.equals("Recent")){
+            tvDesc.setText("This is list exercises recent.");
+        }else if (title.equals("Favorite")){
+            tvDesc.setText("This is list exercises favorite.");
+        }else if (title.equals("Chest")){
+            tvDesc.setText("This is list exercises chest.");
+        }else if (title.equals("Shoulder")){
+            tvDesc.setText("This is list exercises shoulder.");
+        }else if (title.equals("Biceps")){
+            tvDesc.setText("This is list exercises biceps.");
+        }else if (title.equals("Triceps")){
+            tvDesc.setText("This is list exercises triceps.");
+        }else if (title.equals("Abs")){
+            tvDesc.setText("This is list exercises abs.");
+        }else if (title.equals("Glutes")){
+            tvDesc.setText("This is list exercises glutes.");
+        }
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.d("OnStart", "onStart: ");
+        update();
         adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
         lvExercises.setAdapter(adapter);
     }
