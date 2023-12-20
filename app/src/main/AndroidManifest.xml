@@ -31,8 +31,8 @@
             android:exported="false" />
         <activity
             android:name=".activities.ChooseGenderActivity"
-
             android:exported="false" />
+
         <activity
             android:name=".activities.InputNameActivity"
             android:exported="false" />
