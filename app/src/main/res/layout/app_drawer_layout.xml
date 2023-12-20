@@ -25,10 +25,122 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/slide_header">
 
-        <ListView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/listAction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/header_height" />
+            android:layout_marginTop="@dimen/header_height"
+            android:paddingHorizontal="@dimen/_16dp">
+
+            <TextView
+                android:id="@+id/slideTvHeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="height :"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toTopOf="@+id/slideTvWeight"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:paddingLeft="@dimen/_16dp"
+                android:text="165"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toBottomOf="@+id/slideTvHeight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/slideTvHeight" />
+
+            <TextView
+                android:id="@+id/slideTvWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:layout_marginEnd="12dp"
+                android:text="weight :"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toTopOf="@+id/slideTvBMI"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slideTvHeight"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:paddingLeft="@dimen/_16dp"
+                android:text="75"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toBottomOf="@+id/slideTvWeight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/slideTvWeight" />
+
+            <TextView
+                android:id="@+id/slideTvBMI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="BMI :"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toTopOf="@+id/slideTvTarget"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slideTvWeight"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:paddingLeft="@dimen/_16dp"
+                android:text="20"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toBottomOf="@+id/slideTvBMI"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/slideTvBMI" />
+
+            <TextView
+                android:id="@+id/slideTvTarget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:text="Target :"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slideTvBMI"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_16dp"
+                android:paddingLeft="@dimen/_16dp"
+                android:text="165"
+                android:textSize="@dimen/fs_20"
+                app:layout_constraintBottom_toBottomOf="@+id/slideTvTarget"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/slideTvTarget" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

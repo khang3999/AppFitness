@@ -6,13 +6,19 @@
     <color name="background_nav">#EEF0E5</color>
     <color name="selected">#FA9243</color>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
 
     <color name="grey">#cccccc</color>
 
     <color name="selectedRow">#FF2196F3</color>
 
+<<<<<<< HEAD
 =======
     <color name="grey">#cccccc</color>
     <color name="selectedRow">#FF2196F3</color>
 >>>>>>> e0607ad712ec2e5e8f5eaabc402c3e9a4960c0a3
+=======
+>>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
 </resources>

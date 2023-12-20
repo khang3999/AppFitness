@@ -8,8 +8,12 @@
     <dimen name="_16dp">16dp</dimen>
     <dimen name="header_height">156dp</dimen>
     <dimen name="_8dp">8dp</dimen>
-    <dimen name="img_w">120dp</dimen>
+    <dimen name="img_w">100dp</dimen>
     <dimen name="fs_20">20sp</dimen>
+<<<<<<< HEAD
     <dimen name="_64dp">64dp</dimen>
     <dimen name="_90dp">90dp</dimen>
+=======
+    <dimen name="radius_20">20dp</dimen>
+>>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
 </resources>

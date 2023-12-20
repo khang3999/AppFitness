@@ -18,6 +18,7 @@ import android.widget.ListView;
 import com.example.homefitness.R;
 import com.example.homefitness.activities.ListExerciseActivity;
 import com.example.homefitness.adapters.ExerciseAdapter;
+import com.example.homefitness.databases.MyDatabase;
 import com.example.homefitness.models.Exercise;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 public class ExerciseFragment extends AbstractFragment {
     private ArrayList<Exercise> listExerciseFromDatabase;
     private ExerciseAdapter adapter;
+    private MyDatabase myDatabase;
 
     private ArrayList<Integer> selectedRows = new ArrayList<>();
     private ArrayList<Exercise> selectedExercises = new ArrayList<>();
@@ -45,7 +47,8 @@ public class ExerciseFragment extends AbstractFragment {
         listExerciseFromDatabase = new ArrayList<Exercise>();
 
         //Doc du lieu tu database
-        //databaseAPIs.getAllExercise();
+        myDatabase = new MyDatabase(getActivity());
+        listExerciseFromDatabase = myDatabase.getAllExercise();
         ListView lvExercise = fragment.findViewById(R.id.lvExercise);
         Button btnGetStarted = fragment.findViewById(R.id.btnGetStarted);
         Button btnAddFavorite = fragment.findViewById(R.id.btnAddFavoriteList);
@@ -113,8 +116,8 @@ public class ExerciseFragment extends AbstractFragment {
                 }
             }
         });
-
         // TAO MANG TAM THOI
+<<<<<<< HEAD
 
         Exercise exe1 = new Exercise("chest", 30, 100, R.drawable.gif_1, "ch", 0);
         Exercise exe2 = new Exercise("Shoulder", 30, 200, R.drawable.gif_2, "sh", 0);
@@ -132,6 +135,9 @@ public class ExerciseFragment extends AbstractFragment {
         //Search
         filterList = new ArrayList<>(listExerciseFromDatabase);
         adapter = new ExerciseAdapter(this.getActivity(), R.layout.my_listview_layout, filterList);
+=======
+        adapter = new ExerciseAdapter(this.getActivity(), R.layout.my_listview_layout, listExerciseFromDatabase);
+>>>>>>> a3a7f823aa6aefc6e0e25979eedf9f21a714ba31
         lvExercise.setAdapter(adapter);
 
 
