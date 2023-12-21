@@ -7,7 +7,7 @@
     android:padding="@dimen/_16dp"
     tools:context=".activities.AppDrawerActivity"
     android:orientation="vertical">
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/edtFind"
         android:layout_width="match_parent"
         android:layout_height="0dp"

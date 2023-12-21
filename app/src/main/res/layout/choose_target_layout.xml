@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Just trying out the app!"
+            android:text="I want to gain weight!"
             android:paddingLeft="20dp"
             android:textSize="20sp"></RadioButton>
 

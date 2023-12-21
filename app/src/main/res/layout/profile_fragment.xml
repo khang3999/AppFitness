@@ -10,18 +10,20 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@mipmap/ic_account_img"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/lbName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginHorizontal="20dp"
         android:text="aaaaa"
+        android:enabled="false"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -33,6 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:text="Height"
+
+        android:textSize="20sp"
         android:textColor="@color/grey"
         app:layout_constraintBottom_toTopOf="@+id/lbWeight"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -47,6 +51,7 @@
         android:layout_marginStart="30dp"
         android:text="Weight"
 
+        android:textSize="20sp"
         android:textColor="@color/grey"
         app:layout_constraintBottom_toTopOf="@+id/lbBMI"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -60,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
 
+        android:textSize="20sp"
         android:textColor="@color/grey"
         android:text="BMI"
         app:layout_constraintBottom_toTopOf="@+id/lbConclude"
@@ -74,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
 
+        android:textSize="20sp"
         android:textColor="@color/grey"
         android:text="Conclude"
         app:layout_constraintBottom_toTopOf="@+id/lbTarget"
@@ -90,6 +97,7 @@
         android:layout_marginStart="30dp"
         android:text="Target"
 
+        android:textSize="20sp"
         android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -97,21 +105,30 @@
         app:layout_constraintTop_toBottomOf="@+id/lbConclude"
         app:layout_constraintVertical_bias="0.5" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvHeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="aaa"
+        android:enabled="false"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/lbHeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/lbHeight" />
 
-    <TextView
+    <EditText
         android:id="@+id/tvWeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="aaa"
+        android:textSize="20sp"
+        android:enabled="false"
+
+        android:layout_marginHorizontal="20dp"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/lbWeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbWeight"
@@ -121,6 +138,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="aaa"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/lbBMI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbBMI"
@@ -130,6 +149,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="aaa"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/lbConclude"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbConclude"
@@ -141,6 +162,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="aaa"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/lbTarget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbTarget"
@@ -155,18 +178,33 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnExit"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#afea0d"
+        android:padding="15dp"
+        android:text="Submit"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogout"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
-        android:id="@+id/btnExit"
+        android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#afea0d"
         android:padding="15dp"
-        android:text="Exit"
+        android:text="Logout"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -7,14 +7,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.homefitness.R;
+import com.example.homefitness.databases.MyDatabase;
 import com.example.homefitness.databinding.AppDrawerLayoutBinding;
 import com.example.homefitness.databinding.MyListviewLayoutBinding;
 import com.example.homefitness.fragments.AbstractFragment;
@@ -22,20 +25,25 @@ import com.example.homefitness.fragments.CalculateFragment;
 import com.example.homefitness.fragments.ExerciseFragment;
 import com.example.homefitness.fragments.HomeFragment;
 import com.example.homefitness.fragments.ProfileFragment;
+import com.example.homefitness.models.Account;
 import com.google.android.material.navigation.NavigationView;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class AppDrawerActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
     private  int currentFragment = 0;
     private AbstractFragment fragment;
     private AppDrawerLayoutBinding binding;
-
+    private MyDatabase myDatabase;
     private FragmentTransaction transaction; // doi tuong dung de dan fragment vao khung man hinh
 
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
 
     private View preView;
+    private Account account;
     private boolean doubleBackToExitPressedOnce = false;
 
     private static final long BACK_PRESS_DELAY = 2000; // Thời gian giữa 2 lần nhấn nút back
@@ -46,6 +54,15 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         // dieu kien man hinh app_drawer_layout
         setContentView(R.layout.app_drawer_layout);
 
+
+        // khoi tao database
+        myDatabase = new MyDatabase(this);
+        account = new Account();
+        ArrayList<Account> accounts = myDatabase.getAccount();
+
+
+        while (accounts.size()==0){}
+        account = accounts.get(0);
         //Khoi tao binding
         binding = AppDrawerLayoutBinding.inflate(getLayoutInflater());
         // Gán view cho binding
@@ -65,12 +82,24 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
 
         binding.navigationView.setNavigationItemSelectedListener(this);
 
-        // List view slide bar
+        // Slide bar
+        TextView hdFullname = binding.navigationView.findViewById(R.id.headerFullname);
+        TextView hdgender = binding.navigationView.findViewById(R.id.headerGender);
+        hdFullname.setText("Hello, " + account.getName());
+
+       hdgender.setText(account.getGender());
+        binding.tvHeightData.setText(account.getHeight() + " Cm");
+        binding.tvWeightData.setText(account.getWeight() + " Kg");
+        double bmi = account.getWeight()/(account.getHeight()/100*account.getHeight()/100);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        binding.tvBmiData.setText(decimalFormat.format(bmi) + "");
 
 
         // Khoi tao background button mac dinh khi vao app trang home
         binding.mainScreen.findViewById(R.id.btnHome).setBackgroundColor(getColor(R.color.selected));
         preView = binding.mainScreen.findViewById(R.id.btnHome);
+
+
         // Bat su kien
         // Btn home
         binding.mainScreen.findViewById(R.id.btnHome).setOnClickListener(new View.OnClickListener() {
@@ -139,7 +168,6 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
                     // Set lai preview tại nút dang chon
                     preView = view;
                     currentFragment = 3;
-                    Log.d("test", "profile " + currentFragment);
                 }
                 //Update UI
                 updateUI();
@@ -215,22 +243,7 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         }
         return true;
     }
-//    @Override
-//    public void onBackPressed() {
-//        // Kiểm tra thời điểm lần cuối cùng nhấn nút back
-//
-//        if (System.currentTimeMillis() - backPressTime < BACK_PRESS_DELAY) {
-//            // Nếu đã nhấn nút back 2 lần trong khoảng thời gian quy định, thoát ứng dụng
-//            super.onBackPressed();
-//            finishAffinity();
-//
-//
-//        } else {
-//            // Nếu là lần nhấn đầu tiên, thông báo để người dùng biết cần nhấn thêm một lần nữa để thoát
-//            Toast.makeText(this, "Nhấn back thêm một lần nữa để thoát", Toast.LENGTH_SHORT).show();
-//            backPressTime = System.currentTimeMillis();
-//        }
-//    }
+
 @Override
 public void onBackPressed() {
     if (doubleBackToExitPressedOnce) {
@@ -251,5 +264,7 @@ public void onBackPressed() {
             },
             2000 // Thời gian chờ (đơn vị: milliseconds)
     );
+
 }
+
 }

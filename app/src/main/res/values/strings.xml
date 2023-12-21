@@ -22,7 +22,7 @@
     <string name="openDrawer">Open</string>
     <string name="closeDrawer">Close</string>
     <string name="exercise_1">Exercise 1</string>
-    <string name="time">Time = 30s</string>
+    <string name="time">Time :</string>
     <string name="search_here">Search here</string>
 
     <string name="get_list">Get Started</string>
@@ -32,6 +32,7 @@
     <string name="seconds">Seconds:</string>
     <string name="desc">descdescdescdescdescdescdescdescdescdescdescdescdesc</string>
     <string name="start">Start</string>
+    <string name="gender">Gender</string>
 
 
     <string name="go">"GO!"</string>
