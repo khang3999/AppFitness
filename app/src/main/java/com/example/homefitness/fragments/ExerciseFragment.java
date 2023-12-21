@@ -19,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.homefitness.R;
 import com.example.homefitness.activities.ListExerciseActivity;
@@ -79,7 +80,6 @@ public class ExerciseFragment extends AbstractFragment {
                     Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
 
                     intent.putExtra("title", "Customize");
-
                     intent.putExtra("selectedExercises", selectedExercises);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
@@ -104,12 +104,10 @@ public class ExerciseFragment extends AbstractFragment {
                     }
 
                       myDatabase.updateExercisesIntoFavorite(selectedExercises);
+                    String messBMI = "Please choose your target!";
+                    Toast.makeText(getActivity(), "Add Favorite Successfully", Toast.LENGTH_SHORT).show();
 
-
-//                    Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
-//                    intent.putExtra("selectedExercises", selectedExercises);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                    startActivity(intent);
+//
 
                 }
             }
@@ -123,27 +121,6 @@ public class ExerciseFragment extends AbstractFragment {
         lvExercise.setAdapter(adapter);
 
 
-        //Xu ly su kien chon item trong list view
-//        lvExercise.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (selectedRows.size() == 0) {
-//                    backColor = view.getSolidColor();
-//                    view.setBackgroundColor(getResources().getColor(R.color.selectedRow));
-//                    selectedRows.add(i);
-//                    prev = view;
-//                } else {
-//                    if (selectedRows.contains(i)) {
-//                        view.setBackgroundColor(backColor);
-//                        selectedRows.remove(selectedRows.indexOf(i));
-//                    } else {
-//                        view.setBackgroundColor(getResources().getColor(R.color.selectedRow));
-//                        selectedRows.add(i);
-//
-//                    }
-//                }
-//            }
-//        });
         // TAO MANG TAM THOI
 
         //Search
@@ -175,7 +152,7 @@ public class ExerciseFragment extends AbstractFragment {
 
     // Method to filter the list based on the search query
     private void filterList(String query) {
-        Log.d("Filter", "Query: " + query);
+        //Log.d("Filter", "Query: " + query);
         filterList.clear();
 
         if (query.isEmpty()) {
