@@ -10,4 +10,5 @@
     <color name="grey">#cccccc</color>
     <color name="selectedRow">#FF2196F3</color>
     <color name="textData">#899999</color>
+    <color name="btnDelete">#ca1e1e</color>
 </resources>

@@ -16,8 +16,6 @@ import com.example.homefitness.activities.AppDrawerActivity;
 import com.example.homefitness.activities.ListExerciseActivity;
 import com.example.homefitness.activities.WelcomeActivity;
 import com.example.homefitness.databases.MyDatabase;
-import com.example.homefitness.databinding.AppDrawerLayoutBinding;
-import com.example.homefitness.databinding.HomeFragmentBinding;
 import com.example.homefitness.models.Account;
 import com.example.homefitness.models.Exercise;
 

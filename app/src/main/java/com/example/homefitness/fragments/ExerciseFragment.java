@@ -39,13 +39,14 @@ public class ExerciseFragment extends AbstractFragment {
     private ArrayList<Exercise> selectedExercises = new ArrayList<>();
     private int backColor;
     private View prev;
+    private View fragment;
     private ArrayList<Exercise> filterList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View fragment = null;
+        fragment = null;
         // lay giao dien tuong ung dua vao fragment, 3 tham so: layout tuong ung, container , false
         fragment = inflater.inflate(R.layout.exercise_fragment, container, false);
 
@@ -67,7 +68,7 @@ public class ExerciseFragment extends AbstractFragment {
             @Override
             public void onClick(View view) {
                 //clear truoc khi them de k trung du lieu
-                selectedExercises.clear();
+               // selectedExercises.clear();
 
                 selectedRows = adapter.getSelectedRows();
 
@@ -148,6 +149,18 @@ public class ExerciseFragment extends AbstractFragment {
 
 
         return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        selectedExercises.clear();
     }
 
     // Method to filter the list based on the search query

@@ -198,6 +198,46 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     }
 
+    public boolean deleteExercisesFavorite(){
+        boolean success = true;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        String sql;
+        if (sqlite != null) {
+            sql = "Update "+EXERCISE_TABLE_NAME+" Set "+ FAVORITE + " = 0 ";
+            try {
+                sqlite.execSQL(sql);
+            }catch (Exception ex){
+                success = false;
+            }
+        }
+        return success;
+
+    }
+
+    public boolean updateExercisesIntoFavoriteByListId(ArrayList<Integer> listExercisesId){
+        boolean success = true;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        String sql ="";
+        String exercisesID ="";
+
+        for (Integer i:
+                listExercisesId) {
+            exercisesID += i+",";
+        }
+        exercisesID = exercisesID.substring(0, exercisesID.length() - 1 ) ;
+
+        if (sqlite != null) {
+            sql = "Update "+EXERCISE_TABLE_NAME+" Set "+ FAVORITE +" = 0 Where "+ EXERCISE_ID +" IN ("+exercisesID+")";
+            try {
+                sqlite.execSQL(sql);
+            }catch (Exception ex){
+                success = false;
+            }
+        }
+        return success;
+
+    }
+
     public int createExercise(Exercise exercise){
         int result = 0;
         SQLiteDatabase sqlite = getWritableDatabase();

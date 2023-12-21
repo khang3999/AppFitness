@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,9 +15,11 @@ import android.view.MenuItem;
 
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.homefitness.R;
 import com.example.homefitness.adapters.ExerciseAdapter;
+import com.example.homefitness.databases.MyDatabase;
 import com.example.homefitness.models.Exercise;
 import com.google.android.material.navigation.NavigationView;
 
@@ -39,9 +42,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
 
 
         //Khoi tao
-
-
-
         // Get action bar back to previous
         // khoi tao cho drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,19 +65,12 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         update();
 
         //Set apdater
-
-
-        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
-        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
-
         if(intent.getSerializableExtra("selectedExercises") == null){
             listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
         }else {
             listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
         }
-
-        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout, listExercises);
-
+        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
         lvExercises.setAdapter(adapter);
 
         //set tong so bai tap
@@ -89,13 +82,29 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentStartExercise = new Intent(ListExerciseActivity.this, StartExerciseActivity.class);
-                intentStartExercise.putExtra("listExercises",listExercises);
-                intentStartExercise.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intentStartExercise);
+                if (!listExercises.isEmpty()){
+                    Intent intentStartExercise = new Intent(ListExerciseActivity.this, StartExerciseActivity.class);
+                    intentStartExercise.putExtra("listExercises",listExercises);
+                    intentStartExercise.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intentStartExercise);
+                }else{
+                    Toast.makeText(ListExerciseActivity.this, "Your exercise list is empty.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
+    }
+
+    // Hien thi option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (title.equals("Favorite")){
+            // dung menuInflater de dan menu vao: voi tham so thu nhat la menu
+            getMenuInflater().inflate(R.menu.menu, menu);
+
+        }
+        return true;
     }
 
     protected void update(){
@@ -144,6 +153,17 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
+        }else if (item.getItemId() == R.id.menuDelete){
+            // ham xoa database
+            MyDatabase myDatabase = new MyDatabase(this);
+            myDatabase.updateExercisesIntoFavoriteByListId(adapter.getListId());
+            listExercises = myDatabase.getExerciseFavorite();
+            adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
+            lvExercises.setAdapter(adapter);
+
+            Intent intent = getIntent();
+            title = intent.getStringExtra("title");
+
         }
         return super.onOptionsItemSelected(item);
     }
