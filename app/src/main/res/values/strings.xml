@@ -35,5 +35,9 @@
     <string name="gender">Gender</string>
 
 
-    <string name="go">"GO!"</string>
+    <string name="go">"GO !"</string>
+    <string name="exercises">Exercises</string>
+    <string name="calories">Calories</string>
+    <string name="times">Times</string>
+    <string name="finish">FINISH</string>
 </resources>

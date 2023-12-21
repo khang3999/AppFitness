@@ -23,7 +23,7 @@ public class StartExerciseActivity extends AppCompatActivity {
     private ArrayList<Exercise> renderingExercises;
     private int currentGifIndex = 0;
     private static final long COUNTDOWN_INTERVAL = 1000; // 1 second
-    private static final long TOTAL_COUNTDOWN_TIME = 30000; // 30 seconds
+    private static final long TOTAL_COUNTDOWN_TIME = 3000; // 30 seconds
     private TextView timer ;
     private TextView title ;
     private ImageView imageViewGIF;
@@ -75,7 +75,9 @@ public class StartExerciseActivity extends AppCompatActivity {
                 if ((currentGifIndex + 1) == renderingExercises.size()){
                     changeGif();
                     cancel();
-                    Intent intent = new Intent(StartExerciseActivity.this, AppDrawerActivity.class);
+                    Intent intent = new Intent(StartExerciseActivity.this, ResultExerciseActivity.class);
+                    intent.putExtra("listExercises",listExercises);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
 
                 }else {
