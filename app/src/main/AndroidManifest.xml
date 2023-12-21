@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_account_img"
+        android:icon="@mipmap/ic_logo_white_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_account_img"
+        android:roundIcon="@mipmap/ic_logo_white_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeFitness"
         tools:targetApi="31">

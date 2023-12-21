@@ -34,6 +34,7 @@ public class ProfileFragment extends AbstractFragment {
     private TextView tvBMI;
     private TextView tvConclude;
     private TextView tvTarget;
+    private TextView headerFullname;
     private View fragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +62,7 @@ public class ProfileFragment extends AbstractFragment {
                 lbName.setEnabled(true);
                 tvHeight.setEnabled(true);
                 tvWeight.setEnabled(true);
+                lbName.requestFocus();
 
                 btnEdit.setVisibility(View.INVISIBLE);
                 btnSubmit.setVisibility(View.VISIBLE);
@@ -74,21 +76,31 @@ public class ProfileFragment extends AbstractFragment {
 
                     double hei = Double.parseDouble(tvHeight.getText().toString());
                     double wei = Double.parseDouble(tvWeight.getText().toString());
-                    boolean a = myDatabase.updateAccount(account.getId(),lbName.getText().toString(), hei, wei);
-                    Log.d("test", "onClick: " + a);
+
 
                     lbName.setText(lbName.getText().toString());
+
                     tvHeight.setText(tvHeight.getText().toString());
                     tvWeight.setText(tvWeight.getText().toString());
 
                     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-                    tvBMI.setText(decimalFormat.format(calculateBMI(hei,wei)));
+                    String bmiNew = decimalFormat.format(calculateBMI(hei,wei));
+                    tvBMI.setText(bmiNew);
+
+                    // update navbar
+                    headerFullname = getActivity().findViewById(R.id.headerFullname);
+                    headerFullname.setText("Hello, " + lbName.getText().toString());
+
+                    updateDataNavigationbar(hei, wei, bmiNew);
+
 
                     tvConclude.setText("You're "+CalculateFragment.getConclude(calculateBMI(hei,wei)));
                     lbName.setEnabled(false);
                     tvHeight.setEnabled(false);
                     tvWeight.setEnabled(false);
 
+                    //ghi len co so du lieu
+                    boolean a = myDatabase.updateAccount(account.getId(),lbName.getText().toString(), hei, wei);
 
                     btnEdit.setVisibility(View.VISIBLE);
                     btnSubmit.setVisibility(View.INVISIBLE);
@@ -108,6 +120,16 @@ public class ProfileFragment extends AbstractFragment {
         });
 
         return fragment;
+    }
+
+    private void updateDataNavigationbar(double height, double weight, String bmi){
+        TextView slideHeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvHeightData);
+        TextView slideWeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvWeightData);
+        TextView slideBmi = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvBmiData);
+
+        slideHeight.setText(height + " Cm");
+        slideWeight.setText(weight + " Kg");
+        slideBmi.setText(bmi);
     }
 
     public double calculateBMI(double height, double weight){

@@ -15,5 +15,6 @@
     <dimen name="_90dp">90dp</dimen>
 
     <dimen name="radius_20">20dp</dimen>
+    <dimen name="fs_18">18sp</dimen>
 
 </resources>

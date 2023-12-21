@@ -36,4 +36,9 @@
 
 
     <string name="go">"GO!"</string>
+    <string name="data">data</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="bmi">BMI</string>
+    <string name="conclude">Conclude</string>
+    <string name="target">Target</string>
 </resources>

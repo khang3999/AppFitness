@@ -85,9 +85,6 @@ public class CalculateFragment extends AbstractFragment {
                             Toast.makeText(getActivity(), messBMI, Toast.LENGTH_SHORT).show();
 
                             updateDataNavigationbar(account.getHeight(), account.getWeight());
-
-                            Log.d("test", "h new: " + myDatabase.getAccount().get(0).getHeight());
-                            Log.d("test", "w new: " + myDatabase.getAccount().get(0).getWeight());
                         }
                     });
                     //bat su kien clear data

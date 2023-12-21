@@ -1,5 +1,6 @@
 package com.example.homefitness.activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,7 +28,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Khoi tao database
         myDatabase = new MyDatabase(WelcomeActivity.this);
-
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         if(myDatabase.getAccount().size() != 0){
             //handler

@@ -3,4 +3,5 @@
     <dimen name="textSise_24">24sp</dimen>
     <dimen name="_16dp">16dp</dimen>
     <dimen name="header_height">156dp</dimen>
+    <dimen name="_18sp">18sp</dimen>
 </resources>
