@@ -105,6 +105,7 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
         }
     }
     public ArrayList<Integer> getSelectedRows(){
+        Log.d("sel", "getSelectedRows: ");
         return selectedRows;
     }
 }
