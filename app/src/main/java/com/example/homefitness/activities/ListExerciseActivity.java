@@ -160,10 +160,26 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         //set tong so bai tap
         totalWorkouts.setText(listExercises.size()+"");
         //set tong thoi gian
-        totalMinutes.setText((listExercises.size() * 30) +"");
+        totalMinutes.setText((change(listExercises.size() * 30)));
 //        listExercises.clear();
+
+
     }
 
+    public String change(int n){
+        //khai báo 3 biến hour, minute, second đại diện cho giờ phút giây
+        int hour, minute, second;
+        //1h = 3600s -> hour = n / 3600
+        hour = n / 3600;
+        //1p = 60s, vì ở trên ta đã chia 3600 để lấy giờ
+        //vậy nên ta cần lấy phần dư của nó chia cho 60
+        minute = n % 3660 / 60;
+        //phần dư còn lại chính là số giây
+        second = n % 3600 % 60;
+        String rs = hour+"h " + minute+"m "+second+"s";
+        return rs;
+
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -183,14 +199,17 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         }else if (item.getItemId() == R.id.menuDelete){
             // ham xoa database
             MyDatabase myDatabase = new MyDatabase(this);
+            // Cap nhat database
             myDatabase.updateExercisesIntoFavoriteByListId(adapter.getListId());
+            // Lay lai listview moi
             listExercises = myDatabase.getExerciseFavorite();
             adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
             lvExercises.setAdapter(adapter);
 
-            Intent intent = getIntent();
-            title = intent.getStringExtra("title");
 
+            totalWorkouts.setText(listExercises.size()+"");
+            //set tong thoi gian
+            totalMinutes.setText((change(listExercises.size() * 30)));
         }
         return super.onOptionsItemSelected(item);
     }
