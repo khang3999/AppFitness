@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.homefitness.R;
 import com.example.homefitness.databases.MyDatabase;
+import com.example.homefitness.models.Account;
 
 import java.text.DecimalFormat;
 
@@ -74,13 +75,16 @@ public class CalculateFragment extends AbstractFragment {
                         @Override
                         public void onClick(View v) {
                             myDatabase = new MyDatabase(getActivity());
-                            int id = myDatabase.getAccount().get(0).getId();
-                            String name =  myDatabase.getAccount().get(0).getName();
+                            Account account = myDatabase.getAccount().get(0);
+                            int id = account.getId();
+                            String name =  account.getName();
                             myDatabase.updateAccount(id,name,height*100,weight);
-                             clearData();
+                            clearData();
+                            account = myDatabase.getAccount().get(0);
                             String messBMI = "Update success";
                             Toast.makeText(getActivity(), messBMI, Toast.LENGTH_SHORT).show();
 
+                            updateDataNavigationbar(account.getHeight(), account.getWeight());
 
                             Log.d("test", "h new: " + myDatabase.getAccount().get(0).getHeight());
                             Log.d("test", "w new: " + myDatabase.getAccount().get(0).getWeight());
@@ -98,7 +102,6 @@ public class CalculateFragment extends AbstractFragment {
                     edtHeight.requestFocus();
                     String messBMI = "Please enter information!";
                     Toast.makeText(getActivity(), messBMI, Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
@@ -106,6 +109,19 @@ public class CalculateFragment extends AbstractFragment {
 
         return fragment;
     }
+    private void updateDataNavigationbar(double height, double weight){
+        TextView slideHeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvHeightData);
+        TextView slideWeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvWeightData);
+        TextView slideBmi = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvBmiData);
+
+        slideHeight.setText(height + " Cm");
+        slideWeight.setText(weight + " Kg");
+        double bmi = weight/(height/100*height/100);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        slideBmi.setText(decimalFormat.format(bmi) + "");
+    }
+
+
     public void clearData() {
         edtHeight.setText("");
         edtWeight.setText("");
