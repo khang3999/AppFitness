@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,6 @@ public class HomeFragment extends AbstractFragment   {
                 Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
                 // Lay du lieu tu database
                 Account ac = myDatabase.getAccount().get(0);
-
                 String listIdRecentExercise = ac.getListIdRecentExercise();
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 if (myDatabase.getListRecentExercise(listIdRecentExercise).size() != 0) {
@@ -70,6 +70,15 @@ public class HomeFragment extends AbstractFragment   {
         imageFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<Integer> listIdFavorite = new ArrayList<Integer>();
+                Bundle bundle = getArguments();
+                if (bundle != null){
+                    listIdFavorite = bundle.getIntegerArrayList("listIdFavorite");
+                    Log.d("testtt", "onClick: " + listIdFavorite.get(0));
+                }
+
+
+
                 Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
                 ArrayList<Exercise> listExerciseByCategory = new ArrayList<Exercise>();
                 listExerciseByCategory = myDatabase.getExerciseFavorite();

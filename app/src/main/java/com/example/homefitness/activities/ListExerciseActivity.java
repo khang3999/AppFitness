@@ -20,12 +20,13 @@ import android.widget.Toast;
 import com.example.homefitness.R;
 import com.example.homefitness.adapters.ExerciseAdapter;
 import com.example.homefitness.databases.MyDatabase;
+import com.example.homefitness.models.Account;
 import com.example.homefitness.models.Exercise;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class ListExerciseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class ListExerciseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     // List du lieu lay tu database
     // Can lay du lieu tren database do vao list nay
     private ArrayList<Exercise> listExercises;
@@ -36,10 +37,15 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     private ExerciseAdapter adapter;
     private String title;
     private Intent intent;
+    private MyDatabase myDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_exercise_layout);
+
+        // Lay du lieu goi di tu intent cua HomeActivity
+
 
 
         //Khoi tao
@@ -47,8 +53,10 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         // khoi tao cho drawer
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        //Khoi tao array
 
+        // khoi tao database
+        myDatabase = new MyDatabase(this);
+        //Khoi tao array
         listExercises = new ArrayList<Exercise>();
         lvExercises = findViewById(R.id.lvExercise);
         totalWorkouts = findViewById(R.id.txtWorkouts);
@@ -59,8 +67,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         tvDesc = findViewById(R.id.tvDesc);
 
         listExercises = new ArrayList<>();
-        // Lay du lieu goi di tu intent cua HomeActivity
-//        Intent intent = getIntent();
+
 //
 //
 //        // Lấy dữ liệu kiểu chuỗi (ví dụ: getStringExtra)
@@ -83,13 +90,22 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!listExercises.isEmpty()){
+
+                if (listExercises.size() != 0) {
+                    String a = "";
+                    for (Exercise ex : listExercises) {
+                        a += ex.getId() + ",";
+                    }
+                    a = a.substring(0, a.length() - 1);
+                    Account account = myDatabase.getAccount().get(0);
+
+                    myDatabase.updateRecent(account.getId(), a);
                     Intent intentStartExercise = new Intent(ListExerciseActivity.this, StartExerciseActivity.class);
-                    intentStartExercise.putExtra("listExercises",listExercises);
+                    intentStartExercise.putExtra("listExercises", listExercises);
                     intentStartExercise.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentStartExercise);
 
-                }else{
+                } else {
                     Toast.makeText(ListExerciseActivity.this, "Your exercise list is empty.", Toast.LENGTH_SHORT).show();
                 }
 
@@ -102,7 +118,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     // Hien thi option menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (title.equals("Favorite")){
+        if (title.equals("Favorite")) {
             // dung menuInflater de dan menu vao: voi tham so thu nhat la menu
             getMenuInflater().inflate(R.menu.menu, menu);
 
@@ -110,28 +126,28 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         return true;
     }
 
-    protected void update(){
+    protected void update() {
         // Lay du lieu goi di tu intent cua HomeActivity
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
         setTitle(title);
-        if (title.equals("Recent")){
+        if (title.equals("Recent")) {
             tvDesc.setText("This is list exercises recent.");
-        }else if (title.equals("Favorite")){
+        } else if (title.equals("Favorite")) {
             tvDesc.setText("This is list exercises favorite.");
-        }else if (title.equals("Chest")){
+        } else if (title.equals("Chest")) {
             tvDesc.setText("This is list exercises chest.");
-        }else if (title.equals("Shoulder")){
+        } else if (title.equals("Shoulder")) {
             tvDesc.setText("This is list exercises shoulder.");
-        }else if (title.equals("Biceps")){
+        } else if (title.equals("Biceps")) {
             tvDesc.setText("This is list exercises biceps.");
-        }else if (title.equals("Triceps")){
+        } else if (title.equals("Triceps")) {
             tvDesc.setText("This is list exercises triceps.");
-        }else if (title.equals("Abs")){
+        } else if (title.equals("Abs")) {
             tvDesc.setText("This is list exercises abs.");
-        }else if (title.equals("Glutes")){
+        } else if (title.equals("Glutes")) {
             tvDesc.setText("This is list exercises glutes.");
-        } else{
+        } else {
             tvDesc.setText("This is list exercises customize.");
         }
     }
@@ -145,20 +161,20 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         //Set apdater
 //        listExercises.clear();
 
-        if(intent.getSerializableExtra("selectedExercises") == null){
-            listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
-        }else if(intent.getSerializableExtra("listExerciseByCategory") == null){
+        if (intent.getSerializableExtra("selectedExercises") == null) {
+            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
+        } else if (intent.getSerializableExtra("listExerciseByCategory") == null) {
 //            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
-            listExercises= (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
+            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
         }
 
 
-        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
+        adapter = new ExerciseAdapter(this, R.layout.my_listview_layout, listExercises);
         lvExercises.setAdapter(adapter);
 
 //        Log.d("listExercises_1", listExercises.toString());
         //set tong so bai tap
-        totalWorkouts.setText(listExercises.size()+"");
+        totalWorkouts.setText(listExercises.size() + "");
         //set tong thoi gian
         totalMinutes.setText((change(listExercises.size() * 30)));
 //        listExercises.clear();
@@ -166,7 +182,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
 
     }
 
-    public String change(int n){
+    public String change(int n) {
         //khai báo 3 biến hour, minute, second đại diện cho giờ phút giây
         int hour, minute, second;
         //1h = 3600s -> hour = n / 3600
@@ -176,10 +192,11 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         minute = n % 3660 / 60;
         //phần dư còn lại chính là số giây
         second = n % 3600 % 60;
-        String rs = hour+"h " + minute+"m "+second+"s";
+        String rs = hour + "h " + minute + "m " + second + "s";
         return rs;
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -191,32 +208,39 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         finish();
         // Điều này sẽ tự động kết thúc hiện tại Activity và quay lại Activity trước đó (nếu có).
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
-        }else if (item.getItemId() == R.id.menuDelete){
-            // ham xoa database
-            MyDatabase myDatabase = new MyDatabase(this);
-            // Cap nhat database
-            myDatabase.updateExercisesIntoFavoriteByListId(adapter.getListId());
-            // Lay lai listview moi
-            listExercises = myDatabase.getExerciseFavorite();
-            adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
-            lvExercises.setAdapter(adapter);
+        } else if (item.getItemId() == R.id.menuDelete) {
+            if (listExercises.size() != 0) {
+                // ham xoa database
+                MyDatabase myDatabase = new MyDatabase(this);
+
+                myDatabase.deleteExercisesFavorite();
+
+                    // Lay lai listview moi
+                    listExercises = myDatabase.getExerciseFavorite();
+                    adapter = new ExerciseAdapter(this, R.layout.my_listview_layout, listExercises);
+                    lvExercises.setAdapter(adapter);
 
 
-            totalWorkouts.setText(listExercises.size()+"");
-            //set tong thoi gian
-            totalMinutes.setText((change(listExercises.size() * 30)));
-        }
+                    totalWorkouts.setText(listExercises.size() + "");
+                    //set tong thoi gian
+                    totalMinutes.setText((change(listExercises.size() * 30)));
+
+                }
+
+            }
         return super.onOptionsItemSelected(item);
-    }
+        }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
     }
-
 }

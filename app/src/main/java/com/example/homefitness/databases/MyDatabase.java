@@ -155,6 +155,23 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
         return result;
     }
+
+    public boolean updateRecent(int id, String strRecentList) {
+        boolean result = true;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if (sqlite != null) {
+            String sql = "UPDATE " + ACCOUNT_TABLE_NAME + " SET " +LIST_ID_RECENT_EXERCISE +" = '" + strRecentList + "' WHERE " + ACCOUNT_ID + " = " + id;
+            try {
+                sqlite.execSQL(sql);
+
+            } catch (Exception ex) {
+
+                result = false;
+            }
+
+        }
+        return result;
+    }
     // Delete account
     public int deleteAccount(Account account){
         int result = 0;
@@ -173,6 +190,45 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     // ------ EXERCISE START ------
 
+    // Lay danh sach exercise theo id
+    public ArrayList<Exercise> getListExercisesByListId(ArrayList<Integer> listExerciseId) {
+        ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        if (listExerciseId.size() != 0){
+            String temp ="";
+            for (Integer i : listExerciseId){
+                temp += i + " , ";
+            }
+            temp = temp.trim();
+            temp = temp.substring(0, temp.length() - 1);
+            SQLiteDatabase sqlite = getWritableDatabase();
+            if (sqlite != null) {
+                String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + EXERCISE_ID + " IN ( " + temp + " )";
+                Cursor cursor = sqlite.rawQuery(sql, null);
+                if (cursor != null && cursor.moveToFirst()) {
+                    do {
+                        Exercise ex = new Exercise();
+                        int iId = cursor.getColumnIndex(EXERCISE_ID);
+                        int iName = cursor.getColumnIndex(GIF_NAME);
+                        int iTime = cursor.getColumnIndex(TIME);
+                        int iCalorie = cursor.getColumnIndex(CALORIE);
+                        int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                        int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                        int iFavorite = cursor.getColumnIndex(FAVORITE);
+
+                        ex.setId(cursor.getInt(iId));
+                        ex.setGifName(cursor.getString(iName));
+                        ex.setTime(cursor.getInt(iTime));
+                        ex.setCalorie(cursor.getInt(iCalorie));
+                        ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                        ex.setCategoryId(cursor.getString(iCategoryId));
+                        ex.setFavorite(cursor.getInt(iFavorite));
+
+                        lisExercise.add(ex);
+                    } while (cursor.moveToNext());
+                }
+            }}
+        return lisExercise;
+    }
     // Update bai tap vao danh sach yeu thich
     public boolean updateExercisesIntoFavorite(ArrayList<Exercise> listExercisesChoose){
         boolean success = true;
@@ -214,8 +270,10 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     }
 
-    public boolean updateExercisesIntoFavoriteByListId(ArrayList<Integer> listExercisesId){
+    public boolean deleteExercisesIntoFavoriteByListId(ArrayList<Integer> listExercisesId){
         boolean success = true;
+        if (listExercisesId.size() > 0){
+
         SQLiteDatabase sqlite = getWritableDatabase();
         String sql ="";
         String exercisesID ="";
@@ -233,6 +291,7 @@ public class MyDatabase extends SQLiteOpenHelper {
             }catch (Exception ex){
                 success = false;
             }
+        }
         }
         return success;
 
@@ -332,7 +391,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         SQLiteDatabase sqlite = getWritableDatabase();
 
         if (sqlite != null) {
-            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + FAVORITE + " LIKE 1 ";
+            String sql = "SELECT * FROM " + EXERCISE_TABLE_NAME + " WHERE " + FAVORITE + " = 1 ";
 
             Cursor cursor = sqlite.rawQuery(sql, null);
             if (cursor != null && cursor.moveToFirst()) {

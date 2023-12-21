@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
+import com.example.homefitness.activities.AppDrawerActivity;
 import com.example.homefitness.databases.MyDatabase;
 
 
@@ -77,6 +78,7 @@ public class ExerciseFragment extends AbstractFragment {
                     //add tat ca exercise da chon de gui di
                     for (int i : selectedRows) {
                         selectedExercises.add(listExerciseFromDatabase.get(i));
+                        Log.d("slt", "onClick: " + i);
                     }
 
                     Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
@@ -101,12 +103,14 @@ public class ExerciseFragment extends AbstractFragment {
                     //add tat ca exercise da chon de gui di
                     for (int i : selectedRows) {
                         selectedExercises.add(listExerciseFromDatabase.get(i));
+                        Log.d("t", "onClick: " + i);
                     }
                     myDatabase.updateExercisesIntoFavorite(selectedExercises);
                     String messBMI = "Please choose your target!";
                     Toast.makeText(getActivity(), "Add Favorite Successfully", Toast.LENGTH_SHORT).show();
 
-//
+                    Bundle bundle = new Bundle();
+                    bundle.putIntegerArrayList("listIdFavorite", selectedRows);
 
                 }
             }
@@ -174,4 +178,5 @@ public class ExerciseFragment extends AbstractFragment {
         Log.d("Filter", "Filtered List: " + filterList);
         adapter.notifyDataSetChanged();
     }
+
 }
