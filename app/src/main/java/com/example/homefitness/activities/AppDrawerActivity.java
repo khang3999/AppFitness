@@ -48,6 +48,12 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
 
     private static final long BACK_PRESS_DELAY = 2000; // Thời gian giữa 2 lần nhấn nút back
     private long backPressTime;
+
+    private TextView hdFullname;
+    private TextView hdgender;
+    private TextView slideHeight;
+    private TextView slideWeight;
+    private TextView slideBmi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,18 +88,8 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
 
         binding.navigationView.setNavigationItemSelectedListener(this);
 
-        // Slide bar
-        TextView hdFullname = binding.navigationView.findViewById(R.id.headerFullname);
-        TextView hdgender = binding.navigationView.findViewById(R.id.headerGender);
-        hdFullname.setText("Hello, " + account.getName());
 
-       hdgender.setText(account.getGender());
-        binding.tvHeightData.setText(account.getHeight() + " Cm");
-        binding.tvWeightData.setText(account.getWeight() + " Kg");
-        double bmi = account.getWeight()/(account.getHeight()/100*account.getHeight()/100);
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-        binding.tvBmiData.setText(decimalFormat.format(bmi) + "");
-
+        // Slide bar updateData xu li trong onResume
 
         // Khoi tao background button mac dinh khi vao app trang home
         binding.mainScreen.findViewById(R.id.btnHome).setBackgroundColor(getColor(R.color.selected));
@@ -175,8 +171,23 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         });
 
     }
+    private void updateDataNavigationbar(){
+        hdFullname = binding.navigationView.findViewById(R.id.headerFullname);
+        slideHeight = binding.navigationView.findViewById(R.id.tvHeightData);
+        slideWeight = binding.navigationView.findViewById(R.id.tvWeightData);
+        slideBmi = binding.navigationView.findViewById(R.id.tvBmiData);
+
+        hdFullname.setText("Hello, " + account.getName());
+
+        slideHeight.setText(account.getHeight() + " Cm");
+        slideWeight.setText(account.getWeight() + " Kg");
+        double bmi = account.getWeight()/(account.getHeight()/100*account.getHeight()/100);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        slideBmi.setText(decimalFormat.format(bmi) + "");
+    }
 
     private  void updateUI(){
+        updateDataNavigationbar();
         // Set title
         if (currentFragment == 0){
             setTitle("Home");
@@ -205,6 +216,7 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
                 fragment = new ProfileFragment();
             }
         }
+
 //        // Thiet lap cau hoi tuong ung cho Fragment voi du lieu lay tu doi tuong Questions
 //        fragment.setQuestion(Questions.questions.get(currentQuestion));
 //
