@@ -138,7 +138,23 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
         return listAccount;
     }
+    // Update account
+    public boolean updateAccount(int id, String name, double height, double weight) {
+        boolean result = true;
+        SQLiteDatabase sqlite = getWritableDatabase();
+        if (sqlite != null) {
+            String sql = "UPDATE " + ACCOUNT_TABLE_NAME + " SET " +ACCOUNT_NAME +" = '" + name + "' , "  + HEIGHT + " = " + height + " , " + WEIGHT + " = " + weight + " WHERE " + ACCOUNT_ID + " = " + id;
+            try {
+                sqlite.execSQL(sql);
 
+            } catch (Exception ex) {
+
+                result = false;
+            }
+
+        }
+        return result;
+    }
     // Delete account
     public int deleteAccount(Account account){
         int result = 0;
@@ -156,6 +172,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 
     // ------ EXERCISE START ------
+
     // Update bai tap vao danh sach yeu thich
     public boolean updateExercisesIntoFavorite(ArrayList<Exercise> listExercisesChoose){
         boolean success = true;
@@ -180,6 +197,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         return success;
 
     }
+
     public int createExercise(Exercise exercise){
         int result = 0;
         SQLiteDatabase sqlite = getWritableDatabase();
@@ -203,30 +221,33 @@ public class MyDatabase extends SQLiteOpenHelper {
         String sql = null;
         if (sqlite != null) {
             sql = "SELECT * FROM " + EXERCISE_TABLE_NAME;
-        }
-        Cursor cursor = sqlite.rawQuery(sql, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                Exercise ex = new Exercise();
-                int iId = cursor.getColumnIndex(EXERCISE_ID);
-                int iName = cursor.getColumnIndex(GIF_NAME);
-                int iTime = cursor.getColumnIndex(TIME);
-                int iCalorie = cursor.getColumnIndex(CALORIE);
-                int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
-                int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
-                int iFavorite = cursor.getColumnIndex(FAVORITE);
 
-                ex.setId(cursor.getInt(iId));
-                ex.setGifName(cursor.getString(iName));
-                ex.setTime(cursor.getInt(iTime));
-                ex.setCalorie(cursor.getInt(iCalorie));
-                ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
-                ex.setCategoryId(cursor.getString(iCategoryId));
-                ex.setFavorite(cursor.getInt(iFavorite));
 
-                lisExercise.add(ex);
-            } while (cursor.moveToNext());
+            Cursor cursor = sqlite.rawQuery(sql, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Exercise ex = new Exercise();
+                    int iId = cursor.getColumnIndex(EXERCISE_ID);
+                    int iName = cursor.getColumnIndex(GIF_NAME);
+                    int iTime = cursor.getColumnIndex(TIME);
+                    int iCalorie = cursor.getColumnIndex(CALORIE);
+                    int iIndexGifInDrawable = cursor.getColumnIndex(INDEX_GIF_IN_DRAWABLE);
+                    int iCategoryId = cursor.getColumnIndex(CATEGORY_ID);
+                    int iFavorite = cursor.getColumnIndex(FAVORITE);
+
+                    ex.setId(cursor.getInt(iId));
+                    ex.setGifName(cursor.getString(iName));
+                    ex.setTime(cursor.getInt(iTime));
+                    ex.setCalorie(cursor.getInt(iCalorie));
+                    ex.setIndexGifInDrawable(cursor.getInt(iIndexGifInDrawable));
+                    ex.setCategoryId(cursor.getString(iCategoryId));
+                    ex.setFavorite(cursor.getInt(iFavorite));
+
+                    lisExercise.add(ex);
+                } while (cursor.moveToNext());
+            }
         }
+
         return lisExercise;
     }
 
@@ -303,6 +324,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     // Lay danh sach bai tap cuoi cung
     public ArrayList<Exercise> getListRecentExercise(String strRecentExerciseId) {
         ArrayList<Exercise> lisExercise = new ArrayList<Exercise>();
+        if (!strRecentExerciseId.isEmpty()){
         String[] arrStr =  strRecentExerciseId.split(",");
         int[] arrRecentExerciseId = new int[arrStr.length];
         String temp ="";
@@ -338,7 +360,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                     lisExercise.add(ex);
                 } while (cursor.moveToNext());
             }
-        }
+        }}
         return lisExercise;
     }
         // ------ EXERCISE END -------

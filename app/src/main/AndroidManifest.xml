@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_account_img"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_account_img"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeFitness"
         tools:targetApi="31">
@@ -45,16 +45,26 @@
             android:exported="true"
             android:label="@string/title_activity_app"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HomeFitness" />
+            android:theme="@style/Theme.HomeFitness"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CreateDataActivity"
+            android:exported="true"
+            android:label="@string/title_activity_app"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HomeFitness" >
+
         </activity>
     </application>
 
