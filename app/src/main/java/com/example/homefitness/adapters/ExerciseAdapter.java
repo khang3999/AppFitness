@@ -29,6 +29,7 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     private ViewBinding binding;
     private ArrayList<Integer> selectedRows = new ArrayList<>();
     private ArrayList<Exercise> selectedExercises = new ArrayList<>();
+    private ArrayList<Integer> listId = new ArrayList<>();
     private int backColor;
     private View prev;
 
@@ -102,10 +103,16 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
         } else {
             view.setBackgroundColor(context.getColor(R.color.selectedRow));
             selectedRows.add(position);
+
+            Exercise exercise = listExercise.get(position);
+            listId.add(exercise.getId());
         }
     }
     public ArrayList<Integer> getSelectedRows(){
         Log.d("sel", "getSelectedRows: ");
         return selectedRows;
+    }
+    public ArrayList<Integer> getListId(){
+        return listId;
     }
 }

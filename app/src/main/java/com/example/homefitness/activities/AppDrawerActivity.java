@@ -54,6 +54,7 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
     private TextView slideHeight;
     private TextView slideWeight;
     private TextView slideBmi;
+    private TextView headerGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,9 +177,10 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
         slideHeight = binding.navigationView.findViewById(R.id.tvHeightData);
         slideWeight = binding.navigationView.findViewById(R.id.tvWeightData);
         slideBmi = binding.navigationView.findViewById(R.id.tvBmiData);
+        headerGender = binding.navigationView.findViewById(R.id.headerGender);
 
         hdFullname.setText("Hello, " + account.getName());
-
+        headerGender.setText(account.getGender());
         slideHeight.setText(account.getHeight() + " Cm");
         slideWeight.setText(account.getWeight() + " Kg");
         double bmi = account.getWeight()/(account.getHeight()/100*account.getHeight()/100);
@@ -249,7 +251,7 @@ public class AppDrawerActivity extends AppCompatActivity  implements NavigationV
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menuSave){
+        if (item.getItemId() == R.id.menuDelete){
 //            Log.d("test", "Save");
             drawerLayout.closeDrawer(GravityCompat.START);
         }

@@ -115,6 +115,7 @@ public class ProfileFragment extends AbstractFragment {
             @Override
             public void onClick(View v) {
                 myDatabase.deleteAccount(account);
+                myDatabase.deleteExercisesFavorite();
                 getActivity().finishAffinity();
             }
         });

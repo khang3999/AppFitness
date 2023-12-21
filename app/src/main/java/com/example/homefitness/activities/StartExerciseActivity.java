@@ -44,19 +44,18 @@ public class StartExerciseActivity extends AppCompatActivity {
         listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
 
 //        //set up array render exercise
-         Exercise restGIF = new Exercise("gif_rest_5",10,0,R.drawable.gif_rest_5);
-        renderingExercises.addAll(listExercises);
+        // Exercise restGIF = new Exercise("gif_rest_5",10,0,R.drawable.gif_rest_5);
+        //renderingExercises.addAll(listExercises);
         //them 1 gif rest sau moi 3 bai tap
-        for (int i = 0; i < renderingExercises.size() ; i++) {
-            if (i % 3 == 0 && i != 0){
-                renderingExercises.add(i,restGIF);
-            }
-        }
-        Log.d("renderingExercises", renderingExercises.toString());
-
-        startCountdownTimer();
+        //for (int i = 0; i < renderingExercises.size() ; i++) {
+           // if (i % 3 == 0 && i != 0){
+             //   renderingExercises.add(i,restGIF);
+            //}
+        //}
+        //startCountdownTimer();
 
     }
+
     private void startCountdownTimer() {
 //        changeGif();
         resourceId = getResources().getIdentifier(renderingExercises.get(currentGifIndex).getGifName(), "drawable", getPackageName());
@@ -101,5 +100,25 @@ public class StartExerciseActivity extends AppCompatActivity {
             Glide.with(this).asGif().load(resourceId).into(imageViewGIF);
             currentGifIndex = (currentGifIndex + 1) % renderingExercises.size();//
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        listExercises.clear();
+        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
+
+        Exercise restGIF = new Exercise("gif_rest_5",10,0,R.drawable.gif_rest_5);
+
+        renderingExercises.clear();
+        renderingExercises.addAll(listExercises);
+        //them 1 gif rest sau moi 3 bai tap
+        for (int i = 0; i < renderingExercises.size() ; i++) {
+            if (i % 3 == 0 && i != 0){
+                renderingExercises.add(i,restGIF);
+            }
+        }
+        startCountdownTimer();
     }
 }
