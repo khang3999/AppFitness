@@ -156,7 +156,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
         lvExercises.setAdapter(adapter);
 
-        Log.d("listExercises_1", listExercises.toString());
+//        Log.d("listExercises_1", listExercises.toString());
         //set tong so bai tap
         totalWorkouts.setText(listExercises.size()+"");
         //set tong thoi gian
