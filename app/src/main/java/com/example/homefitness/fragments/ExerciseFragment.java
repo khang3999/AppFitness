@@ -58,6 +58,7 @@ public class ExerciseFragment extends AbstractFragment {
         // Khoi tao mang chua gia tri
         listExerciseFromDatabase = new ArrayList<Exercise>();
 
+        intent = new Intent();
         //Doc du lieu tu database
         myDatabase = new MyDatabase(getActivity());
         listExerciseFromDatabase = myDatabase.getAllExercise();

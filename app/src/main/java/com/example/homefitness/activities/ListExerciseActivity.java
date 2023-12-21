@@ -36,8 +36,10 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     private TextView tvDesc;
     private ExerciseAdapter adapter;
     private String title;
+
     private Intent intent;
     private MyDatabase myDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,29 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
 //        totalMinutes.setText((listExercises.size() * 30) +"");
 //
 
+        // Lay du lieu goi di tu intent cua HomeActivity
+        intent = getIntent();
+
+
+        // Lấy dữ liệu kiểu chuỗi (ví dụ: getStringExtra)
+        update();
+
+        //Set apdater
+        if(intent.getSerializableExtra("selectedExercises") == null){
+            listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
+        }else {
+            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
+        }
+        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
+        lvExercises.setAdapter(adapter);
+
+        //set tong so bai tap
+        totalWorkouts.setText(listExercises.size()+"");
+        //set tong thoi gian
+        totalMinutes.setText((listExercises.size() * 30) +"");
+
+
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +130,7 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
                     intentStartExercise.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentStartExercise);
 
-                } else {
+                }else{
                     Toast.makeText(ListExerciseActivity.this, "Your exercise list is empty.", Toast.LENGTH_SHORT).show();
                 }
 
@@ -113,7 +138,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         });
 
     }
-
 
     // Hien thi option menu
     @Override
@@ -153,11 +177,11 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//        intent = new Intent();
-        intent = getIntent();
+    protected void onStart() {
+        super.onStart();
+        Log.d("OnStart", "onStart: ");
         update();
+
         //Set apdater
 //        listExercises.clear();
 
@@ -200,6 +224,10 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
+        lvExercises.setAdapter(adapter);
+
     }
 
     @Override

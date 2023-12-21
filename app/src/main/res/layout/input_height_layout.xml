@@ -8,12 +8,12 @@
 
 
     <TextView
-        android:id="@+id/questionName"
+        android:id="@+id/questionHeight"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="What's your height?"
-        android:textSize="40sp"
+        android:text="@string/questionHeight"
+        android:textSize="@dimen/tSize40"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,9 +25,9 @@
         android:id="@+id/edtHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Your's height (cm)!"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="60dp"
+        android:hint="@string/hintHeight"
+        android:paddingVertical="@dimen/_20dp"
+        android:paddingHorizontal="@dimen/_60dp"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,28 +39,28 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/bntBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnContinue"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:textSize="18sp"
-        android:padding="15dp"
+        android:textSize="@dimen/tSize16"
+        android:padding="@dimen/pad15"
         android:backgroundTint="#afea0d"/>
 
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue"
+        android:text="@string/btnContinue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:textSize="18sp"
-        android:padding="15dp"
+        android:textSize="@dimen/tSize16"
+        android:padding="@dimen/pad15"
         android:backgroundTint="#afea0d"/>
 
     <androidx.constraintlayout.widget.Guideline

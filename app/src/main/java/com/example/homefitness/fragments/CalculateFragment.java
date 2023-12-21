@@ -45,6 +45,7 @@ public class CalculateFragment extends AbstractFragment {
 
         btnUpdateInfo = fragment.findViewById(R.id.btnUpdateInfor);
         btnUpdateInfo.setEnabled(false);
+        btnUpdateInfo.setTextColor(getResources().getColor(R.color.white));
         btnUpdateInfo.setBackgroundColor(getResources().getColor(com.google.android.material.R.color.material_blue_grey_800));
         edtHeight = fragment.findViewById(R.id.edtHeight);
         edtWeight = fragment.findViewById(R.id.edtWeight);
@@ -66,6 +67,7 @@ public class CalculateFragment extends AbstractFragment {
                     lbResult.setVisibility(View.VISIBLE);
                     btnUpdateInfo.setBackgroundColor(getResources().getColor(R.color.btnColor));
                     btnUpdateInfo.setEnabled(true);
+                    btnUpdateInfo.setTextColor(getResources().getColor(R.color.black));
                     lbConclude.setText("You' re " + getConclude(bmi));
                     lbConclude.setVisibility(View.VISIBLE);
                     btnClear.setVisibility(View.VISIBLE);
