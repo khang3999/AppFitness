@@ -8,12 +8,12 @@
 
 
     <TextView
-        android:id="@+id/questionName"
+        android:id="@+id/questionTarget"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="What's your fitness goal/target?"
-        android:textSize="40sp"
+        android:text="@string/questionTarget"
+        android:textSize="@dimen/tSize40"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_marginHorizontal="50dp"
+        android:layout_marginHorizontal="@dimen/_50dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,27 +38,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="I wanna lose weight"
-            android:paddingLeft="20dp"
-            android:textSize="20sp"></RadioButton>
+            android:text="@string/radLose"
+            android:paddingLeft="@dimen/_20dp"
+            android:textSize="@dimen/_20sp"></RadioButton>
 
         <RadioButton
             android:id="@+id/rad2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="I want to gain weight!"
-            android:paddingLeft="20dp"
-            android:textSize="20sp"></RadioButton>
+            android:text="@string/radGain"
+            android:paddingLeft="@dimen/_20dp"
+            android:textSize="@dimen/_20sp"></RadioButton>
 
         <RadioButton
             android:id="@+id/rad3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Just trying out the app!"
-            android:paddingLeft="20dp"
-            android:textSize="20sp"></RadioButton>
+            android:text="@string/radTry"
+            android:paddingLeft="@dimen/_20dp"
+            android:textSize="@dimen/_20sp"></RadioButton>
     </RadioGroup>
 
 
@@ -66,28 +66,28 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/bntBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnContinue"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:textSize="18sp"
-        android:padding="15dp"
+        android:textSize="@dimen/tSize16"
+        android:padding="@dimen/pad15"
         android:backgroundTint="#afea0d"/>
 
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue"
+        android:text="@string/btnContinue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:textSize="18sp"
-        android:padding="15dp"
+        android:textSize="@dimen/tSize16"
+        android:padding="@dimen/pad15"
         android:backgroundTint="#afea0d"/>
 
     <androidx.constraintlayout.widget.Guideline

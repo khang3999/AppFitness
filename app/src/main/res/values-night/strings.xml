@@ -1,12 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">HomeFitness</string>
     <string name="back"><![CDATA[&#60;]]></string>
     <string name="next">Continue</string>
-    <string name="gender_2">Gender_2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gender_1">Gender 1</string>
+    <string name="gender_2">Gender 2</string>
     <string name="gender_3">Gender 3</string>
+    <string name="title_activity_app">AppActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+    <string name="title_activity_home_fitness">HomeFitnessActivity</string>
     <string name="fullname">Full name</string>
-    <string name="recent_exercise">Recent Exercise</string>
+    <string name="recent_exercise">Recent</string>
+    <string name="category">Category</string>
+    <string name="favorite_exercise">Favorite</string>
+
     <string name="True">True</string>
     <string name="openDrawer">Open</string>
     <string name="closeDrawer">Close</string>
+    <string name="exercise_1">Exercise 1</string>
+    <string name="time">Time :</string>
+    <string name="search_here">Search here</string>
+
+    <string name="get_list">Get Started</string>
+    <string name="add_favorite_list">Add favorite</string>
+    <string name="category_name">Category Name</string>
+    <string name="workouts">Workouts:</string>
+    <string name="seconds">Seconds:</string>
+    <string name="desc">descdescdescdescdescdescdescdescdescdescdescdescdesc</string>
+    <string name="start">Start</string>
+    <string name="gender">Gender</string>
+
+
+
+    <string name="go">"GO !"</string>
+    <string name="exercises">Exercises</string>
+    <string name="calories">Calories</string>
+    <string name="times">Times</string>
+    <string name="finish">FINISH</string>
+
+
+    <string name="data">data</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="bmi">BMI</string>
+    <string name="conclude">Conclude</string>
+    <string name="target">Target</string>
+    <string name="calculateFragment">Calculator BMI</string>
+    <string name="lbCalFragment">Height (cm)</string>
+    <string name="lbCalFragment2">Weight (kg)</string>
+    <string name="lbRsCalFragment">Result</string>
+    <string name="hintEdtHeight">Your\'s height (cm)!</string>
+    <string name="hintEdtWeight">Your\'s weight (kg)!</string>
+    <string name="btnCalculate">Calculate</string>
+    <string name="btnUpdate">Update info</string>
+    <string name="btnClear">Clear</string>
+    <string name="questionGender">What\'s your gender?</string>
+    <string name="radFemale">Female</string>
+    <string name="radMale">Male</string>
+    <string name="radSecret">This is secret</string>
+    <string name="bntBack">Back</string>
+    <string name="btnContinue">Continue</string>
+    <string name="questionTarget">What\'s your fitness goal/target?</string>
+    <string name="radLose">I wanna lose weight</string>
+    <string name="radGain">I want to gain weight!</string>
+    <string name="radTry">Just trying out the app!</string>
+    <string name="questionHeight">What\'s your height?</string>
+    <string name="hintHeight">Your\'s height (cm)!</string>
+    <string name="questionName">What\'s your name?</string>
+    <string name="hintName">Your\'s name!</string>
+    <string name="questionWeight">What\'s your weight?</string>
+    <string name="hintWeight">Your\'s weight (kg)!</string>
+
 </resources>

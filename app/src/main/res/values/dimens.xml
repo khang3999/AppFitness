@@ -23,6 +23,13 @@
     <dimen name="_75dp">75dp</dimen>
 
     <dimen name="fs_18">18sp</dimen>
+    <dimen name="pad15">15dp</dimen>
+    <dimen name="tSize16">16sp</dimen>
+    <dimen name="mStart35">35dp</dimen>
+    <dimen name="tSize40">40sp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
 
 
 </resources>

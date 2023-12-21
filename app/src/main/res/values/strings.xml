@@ -48,5 +48,30 @@
     <string name="bmi">BMI</string>
     <string name="conclude">Conclude</string>
     <string name="target">Target</string>
+    <string name="calculateFragment">Calculator BMI</string>
+    <string name="lbCalFragment">Height (cm)</string>
+    <string name="lbCalFragment2">Weight (kg)</string>
+    <string name="lbRsCalFragment">Result</string>
+    <string name="hintEdtHeight">Your\'s height (cm)!</string>
+    <string name="hintEdtWeight">Your\'s weight (kg)!</string>
+    <string name="btnCalculate">Calculate</string>
+    <string name="btnUpdate">Update info</string>
+    <string name="btnClear">Clear</string>
+    <string name="questionGender">What\'s your gender?</string>
+    <string name="radFemale">Female</string>
+    <string name="radMale">Male</string>
+    <string name="radSecret">This is secret</string>
+    <string name="bntBack">Back</string>
+    <string name="btnContinue">Continue</string>
+    <string name="questionTarget">What\'s your fitness goal/target?</string>
+    <string name="radLose">I wanna lose weight</string>
+    <string name="radGain">I want to gain weight!</string>
+    <string name="radTry">Just trying out the app!</string>
+    <string name="questionHeight">What\'s your height?</string>
+    <string name="hintHeight">Your\'s height (cm)!</string>
+    <string name="questionName">What\'s your name?</string>
+    <string name="hintName">Your\'s name!</string>
+    <string name="questionWeight">What\'s your weight?</string>
+    <string name="hintWeight">Your\'s weight (kg)!</string>
 
 </resources>

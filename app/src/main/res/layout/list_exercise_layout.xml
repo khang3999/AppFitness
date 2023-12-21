@@ -67,9 +67,10 @@
         android:gravity="center">
         <Button
             android:id="@+id/btnStart"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/fs_20"
+            android:textSize="@dimen/tSize16"
+            android:padding="@dimen/pad15"
             android:text="@string/start"
             android:backgroundTint="#afea0d"
             android:textColor="@color/black"/>

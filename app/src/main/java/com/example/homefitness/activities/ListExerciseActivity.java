@@ -35,7 +35,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     private TextView tvDesc;
     private ExerciseAdapter adapter;
     private String title;
-    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,27 +57,27 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
 
         tvDesc = findViewById(R.id.tvDesc);
 
-        listExercises = new ArrayList<>();
         // Lay du lieu goi di tu intent cua HomeActivity
-//        Intent intent = getIntent();
-//
-//
-//        // Lấy dữ liệu kiểu chuỗi (ví dụ: getStringExtra)
-//        update();
-//
-//        //Set apdater
-//        if(intent.getSerializableExtra("selectedExercises") == null){
-//            listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
-//        }else {
-//            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
-//        }
-//        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
-//        lvExercises.setAdapter(adapter);
-//        //set tong so bai tap
-//        totalWorkouts.setText(listExercises.size()+"");
-//        //set tong thoi gian
-//        totalMinutes.setText((listExercises.size() * 30) +"");
-//
+        Intent intent = getIntent();
+
+
+        // Lấy dữ liệu kiểu chuỗi (ví dụ: getStringExtra)
+        update();
+
+        //Set apdater
+        if(intent.getSerializableExtra("selectedExercises") == null){
+            listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
+        }else {
+            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
+        }
+        adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
+        lvExercises.setAdapter(adapter);
+
+        //set tong so bai tap
+        totalWorkouts.setText(listExercises.size()+"");
+        //set tong thoi gian
+        totalMinutes.setText((listExercises.size() * 30) +"");
+
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +87,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
                     intentStartExercise.putExtra("listExercises",listExercises);
                     intentStartExercise.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentStartExercise);
-
                 }else{
                     Toast.makeText(ListExerciseActivity.this, "Your exercise list is empty.", Toast.LENGTH_SHORT).show();
                 }
@@ -97,7 +95,6 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
         });
 
     }
-
 
     // Hien thi option menu
     @Override
@@ -137,36 +134,12 @@ public class ListExerciseActivity extends AppCompatActivity implements Navigatio
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//        intent = new Intent();
-        intent = getIntent();
+    protected void onStart() {
+        super.onStart();
+        Log.d("OnStart", "onStart: ");
         update();
-        //Set apdater
-//        listExercises.clear();
-
-        if(intent.getSerializableExtra("selectedExercises") == null){
-            listExercises =(ArrayList<Exercise>) intent.getSerializableExtra("listExerciseByCategory");
-        }else if(intent.getSerializableExtra("listExerciseByCategory") == null){
-//            listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
-            listExercises= (ArrayList<Exercise>) intent.getSerializableExtra("selectedExercises");
-        }
-
-
         adapter = new ExerciseAdapter(this,R.layout.my_listview_layout,listExercises);
         lvExercises.setAdapter(adapter);
-
-//        Log.d("listExercises_1", listExercises.toString());
-        //set tong so bai tap
-        totalWorkouts.setText(listExercises.size()+"");
-        //set tong thoi gian
-        totalMinutes.setText((listExercises.size() * 30) +"");
-//        listExercises.clear();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 
     @Override
