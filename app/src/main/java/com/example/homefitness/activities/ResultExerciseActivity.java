@@ -57,7 +57,9 @@ public class ResultExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentFinish = new Intent(ResultExerciseActivity.this, AppDrawerActivity.class);
+                intentFinish.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intentFinish);
+                finish();
             }
         });
 

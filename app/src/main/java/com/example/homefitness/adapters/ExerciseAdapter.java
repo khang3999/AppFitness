@@ -97,7 +97,7 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     }
 
     private void handleItemClick(View view, int position) {
-        if (selectedRows.contains(position)) {
+        if (selectedRows.contains(position)){
             view.setBackgroundColor(context.getColor(android.R.color.transparent));
             selectedRows.remove(Integer.valueOf(position));
         } else {
@@ -109,7 +109,7 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
         }
     }
     public ArrayList<Integer> getSelectedRows(){
-        Log.d("sel", "getSelectedRows: ");
+//        Log.d("sel", "getSelectedRows: ");
         return selectedRows;
     }
     public ArrayList<Integer> getListId(){

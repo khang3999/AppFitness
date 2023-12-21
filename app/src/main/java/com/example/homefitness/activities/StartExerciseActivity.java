@@ -38,10 +38,9 @@ public class StartExerciseActivity extends AppCompatActivity {
         title = findViewById(R.id.title);
         timer = findViewById(R.id.timer);
         imageViewGIF = findViewById(R.id.imageViewGIF);
-        renderingExercises = new ArrayList<>();
-        listExercises = new ArrayList<>();
-        Intent intent = getIntent();
-        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
+
+//        Intent intent = getIntent();
+//        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
 
 //        //set up array render exercise
         // Exercise restGIF = new Exercise("gif_rest_5",10,0,R.drawable.gif_rest_5);
@@ -106,12 +105,15 @@ public class StartExerciseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        listExercises.clear();
-        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
 
+        renderingExercises = new ArrayList<>();
+        listExercises = new ArrayList<>();
+
+        listExercises = (ArrayList<Exercise>) intent.getSerializableExtra("listExercises");
+//        Log.d("listExercises", listExercises.toString());
         Exercise restGIF = new Exercise("gif_rest_5",10,0,R.drawable.gif_rest_5);
 
-        renderingExercises.clear();
+//        renderingExercises.clear();
         renderingExercises.addAll(listExercises);
         //them 1 gif rest sau moi 3 bai tap
         for (int i = 0; i < renderingExercises.size() ; i++) {
@@ -119,6 +121,7 @@ public class StartExerciseActivity extends AppCompatActivity {
                 renderingExercises.add(i,restGIF);
             }
         }
+
         startCountdownTimer();
     }
 }

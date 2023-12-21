@@ -41,6 +41,7 @@ public class ExerciseFragment extends AbstractFragment {
     private View prev;
     private View fragment;
     private ArrayList<Exercise> filterList;
+    private Intent intent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,21 +69,21 @@ public class ExerciseFragment extends AbstractFragment {
             @Override
             public void onClick(View view) {
                 //clear truoc khi them de k trung du lieu
-               // selectedExercises.clear();
+                selectedExercises.clear();
 
                 selectedRows = adapter.getSelectedRows();
-
 
                 if (selectedRows.size() != 0) {
                     //add tat ca exercise da chon de gui di
                     for (int i : selectedRows) {
                         selectedExercises.add(listExerciseFromDatabase.get(i));
                     }
-                    Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
 
+                    Intent intent = new Intent(getActivity(), ListExerciseActivity.class);
                     intent.putExtra("title", "Customize");
                     intent.putExtra("selectedExercises", selectedExercises);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
                     startActivity(intent);
                 }
             }
@@ -93,18 +94,15 @@ public class ExerciseFragment extends AbstractFragment {
             @Override
             public void onClick(View view) {
                 //clear truoc khi them de k trung du lieu
-                selectedExercises.clear();
+//                selectedExercises.clear();
 
                 selectedRows = adapter.getSelectedRows();
-
-
                 if (selectedRows.size() != 0) {
                     //add tat ca exercise da chon de gui di
                     for (int i : selectedRows) {
                         selectedExercises.add(listExerciseFromDatabase.get(i));
                     }
-
-                      myDatabase.updateExercisesIntoFavorite(selectedExercises);
+                    myDatabase.updateExercisesIntoFavorite(selectedExercises);
                     String messBMI = "Please choose your target!";
                     Toast.makeText(getActivity(), "Add Favorite Successfully", Toast.LENGTH_SHORT).show();
 
@@ -152,14 +150,9 @@ public class ExerciseFragment extends AbstractFragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
+//        Log.d("selectedExercises", selectedExercises.toString());
         selectedExercises.clear();
     }
 
