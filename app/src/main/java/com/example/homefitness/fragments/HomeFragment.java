@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.homefitness.R;
 import com.example.homefitness.activities.AppDrawerActivity;
@@ -20,6 +21,7 @@ import com.example.homefitness.databases.MyDatabase;
 import com.example.homefitness.models.Account;
 import com.example.homefitness.models.Exercise;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -184,5 +186,24 @@ public class HomeFragment extends AbstractFragment   {
             }
         });
         return fragment;
+    }
+    private void updateDataNavigationbar(double height, double weight){
+        TextView slideHeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvHeightData);
+        TextView slideWeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvWeightData);
+        TextView slideBmi = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvBmiData);
+
+        slideHeight.setText(height + " Cm");
+        slideWeight.setText(weight + " Kg");
+        double bmi = weight/(height/100*height/100);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        slideBmi.setText(decimalFormat.format(bmi) + "");
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Account account = myDatabase.getAccount().get(0);
+        updateDataNavigationbar(account.getHeight(), account.getWeight());
+        TextView headerName = getActivity().findViewById(R.id.navigationView).findViewById(R.id.headerFullname);
+        headerName.setText(account.getName());
     }
 }

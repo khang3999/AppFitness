@@ -48,7 +48,7 @@ public class CalculateFragment extends AbstractFragment {
         btnUpdateInfo.setBackgroundColor(getResources().getColor(com.google.android.material.R.color.material_blue_grey_800));
         edtHeight = fragment.findViewById(R.id.edtHeight);
         edtWeight = fragment.findViewById(R.id.edtWeight);
-
+        myDatabase = new MyDatabase(getActivity());;
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +74,7 @@ public class CalculateFragment extends AbstractFragment {
                     btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            myDatabase = new MyDatabase(getActivity());
+
                             Account account = myDatabase.getAccount().get(0);
                             int id = account.getId();
                             String name =  account.getName();
@@ -118,6 +118,14 @@ public class CalculateFragment extends AbstractFragment {
         slideBmi.setText(decimalFormat.format(bmi) + "");
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Account account = myDatabase.getAccount().get(0);
+        updateDataNavigationbar(account.getHeight(), account.getWeight());
+        TextView headerName = getActivity().findViewById(R.id.navigationView).findViewById(R.id.headerFullname);
+        headerName.setText(account.getName());
+    }
 
     public void clearData() {
         edtHeight.setText("");

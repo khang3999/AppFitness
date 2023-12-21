@@ -47,8 +47,6 @@ public class ProfileFragment extends AbstractFragment {
         myDatabase = new MyDatabase(getActivity());
         account  =new Account();
         account  = myDatabase.getAccount().get(0);
-        Log.d("test", "h pro: "+account.getHeight());
-        Log.d("test", "w pro: "+account.getWeight());
 
         updateSetText(fragment);
 
@@ -128,6 +126,9 @@ public class ProfileFragment extends AbstractFragment {
         TextView slideWeight = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvWeightData);
         TextView slideBmi = getActivity().findViewById(R.id.navigationView).findViewById(R.id.tvBmiData);
 
+        TextView headerName = getActivity().findViewById(R.id.navigationView).findViewById(R.id.headerFullname);
+        headerName.setText(account.getName());
+
         slideHeight.setText(height + " Cm");
         slideWeight.setText(weight + " Kg");
         slideBmi.setText(bmi);
@@ -139,10 +140,14 @@ public class ProfileFragment extends AbstractFragment {
         return bmi;
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
         updateSetText(fragment);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+        String bmiNew = decimalFormat.format(calculateBMI(account.getHeight(),account.getWeight()));
+        updateDataNavigationbar(account.getHeight(), account.getWeight(), bmiNew);
     }
 
     private void updateSetText(View fragment){
