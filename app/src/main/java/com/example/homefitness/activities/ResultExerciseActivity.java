@@ -46,7 +46,6 @@ public class ResultExerciseActivity extends AppCompatActivity {
                 listExercises) {
             totalCalories += ex.getCalorie();
         }
-
         txtCalories.setText(totalCalories + "");
         txtTimes.setText((listExercises.size() * 30) +"");
         txtExercises.setText(listExercises.size() + "");

@@ -15,7 +15,7 @@ import com.example.homefitness.models.Account;
 import java.util.ArrayList;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private static final long DELAY_TIME = 5000; // Đơn vị: milliseconds
+    private static final long DELAY_TIME = 3000; // Đơn vị: milliseconds
 
 
     private MyDatabase myDatabase;
@@ -44,7 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
                 }
-            }, 5000);
+            }, 3000);
         }
         else {
             //handler
@@ -56,7 +56,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
                 }
-            }, 5000);
+            }, 3000);
         }
 
 

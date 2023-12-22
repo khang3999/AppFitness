@@ -105,7 +105,6 @@ public class StartExerciseActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-
         renderingExercises = new ArrayList<>();
         listExercises = new ArrayList<>();
 
@@ -123,5 +122,10 @@ public class StartExerciseActivity extends AppCompatActivity {
         }
 
         startCountdownTimer();
+    }
+
+    @Override
+    public void onBackPressed() {
+        
     }
 }
